@@ -1,6 +1,6 @@
 {
   "name": "apocalyptic-lists-demo",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "dependencies": {
     "device": "*"
   },
@@ -42,5 +42,5 @@
     "arcade"
   ],
   "testDependencies": {},
-  "description": "Apocalyptic Lists — playable reference demo, first-launch open rooms and saved progress"
+  "description": "Apocalyptic Lists — ready-to-play reference demo with saved progress"
 }

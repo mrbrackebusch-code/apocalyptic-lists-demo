@@ -1,15 +1,10 @@
 {
-  "schema": "AL-OWNER-PREVIEW-PUBLICATION-1",
+  "schema": "AL-COMPLETE-PUBLICATION-1",
   "kind": "demo",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
-  "status": "experimental-owner-directed-preview",
-  "primary_directive": "Conserve usage indefinitely. Preserve complete requested quality; reuse sufficient evidence and frozen Recipes/media.",
-  "baseline": {
-    "version": "0.1.0",
-    "release_manifest_sha256": "ff9cd12bc88af10df673b7731e2b5e68b6e10ca980fe9b8dac17dbf059b49084",
-    "files": 224
-  },
+  "status": "complete-current-release",
+  "primary_directive": "Conserve usage indefinitely; preserve complete requested quality and reuse sufficient source-bound evidence.",
   "runtime": {
     "source_order": [
       "contracts.ts",
@@ -134,14 +129,211 @@
       }
     ],
     "customts_sha256": "08a1ae3c381380098e6667165804baa10197108edaf6adc24a0da98c6a7613b4",
+    "dimensions": [
+      576,
+      720
+    ],
     "learner_main_comment_only": true,
     "learner_reference_callbacks": 0
   },
-  "frozen_instructional_material": {
-    "recipe_files": 29,
-    "asset_files": 62,
-    "byte_exact": true,
-    "new_visual_media_qualification": "not_run"
+  "instructional_material": {
+    "recipes": 27,
+    "media": {
+      "count": 54,
+      "captured": 54,
+      "verified": 54
+    },
+    "all_current_runtime": true,
+    "native_blocks_reuse": {
+      "schema": "AL-NATIVE-INSTRUCTION-REUSE-1",
+      "context": "Historical native Blocks engineering proof and captures, reused for unchanged native API and isolated/cumulative reference sources. Current runtime and gameplay media have separate evidence.",
+      "target": {
+        "branch": "stable4.1",
+        "tag": "v4.1.25",
+        "commits": "https://github.com/microsoft/pxt-arcade/commits/d4885bd35de1a9300183bf5a3fd1eec816992625",
+        "target": "4.1.25",
+        "pxt": "13.1.23"
+      },
+      "historical_runtime_sha256": "e5bca7a3dac745e6626a7ac74d7775982e88e1a6f3131fd1a5f69dc22d615408",
+      "historical_receipt": {
+        "path": "validation/native-tutorial/RESULTS.json",
+        "sha256": "151e225a0f1be8e1a78f1899f58540d1004051e48b94b409e317aa0c2fac6826"
+      },
+      "native_api_lf_sha256": {
+        "learner-api.ts": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8",
+        "contracts.ts": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+      },
+      "references": {
+        "R01": {
+          "isolated": "ef1d33f42e0ac2d87f226f96087cfcd43c420bd9d83a54878e7d277a1b55a49a",
+          "cumulative": "5c5358008dd34a2fd3cb5dbc56d7561c825a7bff732aad9aed38787848811501",
+          "xml_sha256": "e847b4bed251b54d83b3b2b1d29db44ada0ef74526737e1436deb146f1fc5661",
+          "roundtrip_sha256": "2e356799dda08c1a5c3983a50424c5ab18667fac38ed61d4cb741adabc050499"
+        },
+        "R02": {
+          "isolated": "e4d8536a31fe466a285f2ac2e7b3c4cd487018a961ba9d2cf2e3848396e6f571",
+          "cumulative": "8892e3bed3758aaeb6d72f964503ec5a378923a65feeb027370876bb6ad68412",
+          "xml_sha256": "27490e6e464994f42969c0b2543ea2ddb6083f204517a083baaf4eef80fd6e7a",
+          "roundtrip_sha256": "c8357806d41928ef6d90645f3c0c47e7f8a4aa604b8d39124418ce9418b1d1b2"
+        },
+        "R03": {
+          "isolated": "6d8ec58a4f09b724e3ceb438fe1b8aaaa751a2870b92b67a6ab3adb9b410f1b5",
+          "cumulative": "fe497df4ac0dbf4546ae1818a8199c77c17ec4e6e2ed171d21f5b602fafbe4bb",
+          "xml_sha256": "aea170a3303140a3a7e333a02cbbe638c2aaa5db03022aacc682aa5923d21734",
+          "roundtrip_sha256": "31f6dc06c520a67094d69cedef878c1e02f4427514c428850da52c3f6d87aa89"
+        },
+        "R04": {
+          "isolated": "64bf61b9c435bfd7303d8643225f34ffb88cb3f96f1d52ce2a211a73b2442124",
+          "cumulative": "bd8a4db4dec639f0f038ef690326cdaa2f1c22e01f14e3c1f20d0a0f3fcab7dc",
+          "xml_sha256": "b17efd904f93386f9f01537c3d0871fa05ec31a96f2081eb49fbce35274a6f56",
+          "roundtrip_sha256": "c12ae3f8f0b9bd398bcbc187da899997808436df2ea26844ecd0efc00e2f2f58"
+        },
+        "R05": {
+          "isolated": "b5682f384319c0589ce4b34cd9d17b5d1b02f44374ff1ed69a4559be2783f7d4",
+          "cumulative": "3902d241efa153185222ebb0282878e3e4affe42e12276a8fc4b9813122cee9f",
+          "xml_sha256": "2bc47f0826fe8d34f7f3b2f745374e3ee76c866dbc8694e4411b95263a22ac33",
+          "roundtrip_sha256": "5ce0777f2e570389eebab8887a0eaaf26fef2e5ff0e7cb0e4ee55d260958169d"
+        },
+        "R06": {
+          "isolated": "39b68707a1441bfbe895aecbdc641e1bf7fb5f69b69e51519886664b783d4981",
+          "cumulative": "0bf9d57aaaee7747db1114696406ba6702c1c9effc56eddd9473b0b68a732649",
+          "xml_sha256": "c3b868912416f52f29de4fff3fd0fc38d4d9e169be6656b5818a447aec570683",
+          "roundtrip_sha256": "f971cb3df31c42952651df78f71ee38a3b9cace734d7d36f72bec2b350036e7b"
+        },
+        "R07": {
+          "isolated": "d23fa45d0fe17fcbc82670b95fe523d56f6b6d0fcc6cce4aa67b4ffa4f00c99d",
+          "cumulative": "e772f167b60c0f802593d8736333e9653acf02b4b5aac059c5c7d059dde5235c",
+          "xml_sha256": "66b50094eb1b5036eaf39aedd91d54e2caffd3fec8b5503d266068330a0e3d71",
+          "roundtrip_sha256": "91e327abab966b30bf7e8a42a95ac392cfb7ff2679a7e2a27e6736037abe7388"
+        },
+        "R08": {
+          "isolated": "5e61c04da90aec74f7f99621ec3cb44896ec3f7fe9c720a605646d57d52964df",
+          "cumulative": "587cdb304a5255e1305a3044d7988a7ae42259813da8bc71c981856f22273240",
+          "xml_sha256": "e828718ee41011cf4a2501c24cbfa046b240a2665a40153c22f207f35d399b92",
+          "roundtrip_sha256": "fdd943a48fd53630c5cfac3c8305740505673b0fc91f58817a489fee1d81423f"
+        },
+        "R09": {
+          "isolated": "009191c80b60b1280b3a500e00a0fc8164cd0a9bfa530fcdd66c960e83bf386d",
+          "cumulative": "ab07de8df506d77fd5e81b5b164c54ac87698ce9ba6dee63d96102ee7b7179bf",
+          "xml_sha256": "37268ebd717c421a354bf4f57eb2198780f339e8aeaac2831205d07e740864e1",
+          "roundtrip_sha256": "61930cd834a54917fa7b1b623d53348a129a26382115dc7bf97e9d444dad88c6"
+        },
+        "R10": {
+          "isolated": "9f107780d0c092ab93d8be9e9a8ba9ec64c9ccd43a17a976a19f349cc4d9e592",
+          "cumulative": "dcbeb300b9415e54aaab56631cd0f10bf1115a7e958c390fdedc238b34af63ac",
+          "xml_sha256": "ef75b612f43a15e03fa7edf8dcb37dc299f61cd34f6881a08d7a40a97bc5d54c",
+          "roundtrip_sha256": "3761a363d1a2da00243d4e3a2b49b9cae7a0a5c364e9ba1474b518a75a6e100b"
+        },
+        "R11": {
+          "isolated": "c5906aaedfec1b0cd6f176c5ae8a555a6a6977a33fea3dcd821c2c35dc9e54af",
+          "cumulative": "42cb177faea2b636962efafd5a44b746fb37e8f254facb583ddbd8d2953debe2",
+          "xml_sha256": "ce8c845c2df0e29dcfbed26559d2640208dbc8b5a689898df3f867b443da5c05",
+          "roundtrip_sha256": "c3c74ff0fd89de68c97cd6b36de8f5b8cb0cc2b02055b9ad81f0d3bc8486a705"
+        },
+        "R12": {
+          "isolated": "0e807499c753ae8e410f91c932c76c62c16ad59c2fbc3adf72c3f0e431337d01",
+          "cumulative": "6d6eb503fc3ba21f66bbaa7fed6e81e7beb14c01ff30be585ce6780dc5e4978a",
+          "xml_sha256": "8fefbb498c4b88c1784d8fc560ba7b8d1cb2ceb98190a0a44294795460eb78df",
+          "roundtrip_sha256": "b3a0fc8ebda6ed34c8f10456b0e4fd1e9e234d903777089b89d92250aca44685"
+        },
+        "R13": {
+          "isolated": "b87e77db4a9989de6d01833231a1f43d4e45e8b07781d0540c4f6e6f8527ddef",
+          "cumulative": "8c8a39d494bba26d056a40825c9556a88e9fc6f748976d2133393b5cc9706296",
+          "xml_sha256": "65c7454da4ae2772fd1e5e57304d6b8a09a90825314fce851967fcd7d23ac767",
+          "roundtrip_sha256": "5552959f66e0a00b3d5a7c8e4c81ba5c46f559c4419feec02e67f191dfe781e8"
+        },
+        "R14": {
+          "isolated": "44f7e18ed0328e2a6783606446c6a85f2a54de80755196a87b51602d15c098b7",
+          "cumulative": "3505d5322118090156133111ccb676a02607e1d76f8d75227bee12dec27d6717",
+          "xml_sha256": "c288e59cffedaa9555183450132e9a17d06ff781ed3f8d810a4f7a3cf3fd364a",
+          "roundtrip_sha256": "a89e0145573ecb93147759d78eaf200ebface410e2959d998926a4d38ca069ae"
+        },
+        "R15": {
+          "isolated": "5663be64bb986f8a369bab39d21d5107cd2719ce84f60b4d67fce887e9d27157",
+          "cumulative": "514d8e3ddd1f2bb1325de3673727b0772020c230440f81f1dc34b4c784fd3105",
+          "xml_sha256": "32d4a69eb4ed20dd697734fe386e60927509bdf579f22e98e8c03f482b1fe596",
+          "roundtrip_sha256": "c5111d81e2f7456497d225a4426803083729dead7d1da7f8d17e4ceb654d1e28"
+        },
+        "R16": {
+          "isolated": "f995b329fac49aa70ceb4313627a57f35f45cc90fd20fce3bd1435b955d300b6",
+          "cumulative": "3b5bb4193e5a18c0aea38cc29038052774e3dee7ba5be65e80846c2d32d360aa",
+          "xml_sha256": "3cb27d75bc159f09cf3caf69636b6a19e03afde622cdf574ffee7a0ab99756da",
+          "roundtrip_sha256": "8ca53ac8a53060e90f7b0b51d71b109655b64d6d134806fafdbf7e2a03047255"
+        },
+        "R17": {
+          "isolated": "f154ea8f533a05fee51c34c92475fa986f6c47816da1732bab7c2bb1b62d053e",
+          "cumulative": "9cfc6ffa705a59bf89cbe72e2869a9cd3d4db76c8544f3bd9c9980810fa4ea2c",
+          "xml_sha256": "036e84ec34cba2d706ef85aa90521c2b72c26f0a14c4d2cb5da18f68b0403ec6",
+          "roundtrip_sha256": "c5d18ab177c52c0b0107b567dd1f5031a81fe38fe2f4a0045ef62560f4ad5b23"
+        },
+        "R18": {
+          "isolated": "2741416c9afdb2744fba089b2d0f03b16f581988b7d0d85840c54aa137065473",
+          "cumulative": "fbdf8e711ad0f519fbc745a9f461e09692edad31873734407765932d96a8c145",
+          "xml_sha256": "7b49a6610a9129b905118fcbe42822f220554eb051af73a9dd4f7bffc171251f",
+          "roundtrip_sha256": "70533fcf457e648fc071eac78060d750295e5b5dd58676c6191997b998f5266d"
+        },
+        "R19": {
+          "isolated": "ca2d287cd77935ff6b5ac781ea5367765ee1fce92c6f32663fcb4ce42226c94e",
+          "cumulative": "3cd27136b353011a4189d3dfa575a9d8969d144127de1fac35e2431da4fdb694",
+          "xml_sha256": "052bcd7b5a30d29c85bde8e94d068a6941ccdd24c0d34d9a611bbc0ec5e9482d",
+          "roundtrip_sha256": "9552eff51815c444eb1141bfc0e01215108f4929ddf2db86a0ea4cfbc0ec74e9"
+        },
+        "R20": {
+          "isolated": "838a680bf6a1dc33ddb4259165ac72e16af943f27f9318209d4f56beb34ae2f4",
+          "cumulative": "81417a65b412ff50324afe905c408dc420b135d0185edbde02ecfc379901a1ac",
+          "xml_sha256": "e7f7f7375f088f3c8f5399f4565767752bebb76d07fa7dc11791fbed58232b4e",
+          "roundtrip_sha256": "f9937ae246f015f3f592435c4e9957bbec8c712440c0592262170639cf032830"
+        },
+        "R21": {
+          "isolated": "29de751ff0917ac1a1885ef2a7344cc9d25adee55220f2bddfc982e206791c62",
+          "cumulative": "6f6e413219a54a595a094bcc8326cf99000fbc4701e7b09b1de8d747c00f4149",
+          "xml_sha256": "8b4cf1cd906c17ea86d779a363419d5cbcf019b357992bb91b1dafb1b081fbf3",
+          "roundtrip_sha256": "49bc45c39904e345f1772dad6736fda700f19923412c844c5dc7f26cea29dcda"
+        },
+        "R22": {
+          "isolated": "0de4a47d32095695cc310e7520524fd98144ca323eb84f7aa4d8c21c31e959a1",
+          "cumulative": "af0e5d8f87633e6c1062204ddb34cef2c56e3154579319cc2d24549156624028",
+          "xml_sha256": "97d0b70f6c114a3fee5cd9ca3e69a13a84fb5647de20a0bffb16c8f38c21fbad",
+          "roundtrip_sha256": "dba6db79fcddb5e975b157915f67aadfc9f0529b037882f7107909d6af893385"
+        },
+        "R23": {
+          "isolated": "9a5e16de4ed78f899c1d15bac6d8f86a1d852ae2c6680924eb53727f5b85c205",
+          "cumulative": "255f39e19e3f337f31381a1d0386629a3fd742f53b17247d3e34366f63d0fb38",
+          "xml_sha256": "82f9fcb3bdc527ea031c2c61f23bcf682fc170e10408e131300d8880023f08a8",
+          "roundtrip_sha256": "a2ccf0bf03356f95ab69ccae4b8fba0b323079545bda1b7e85282b29108c95d7"
+        },
+        "R24": {
+          "isolated": "af8c7d64a1dfd9d2d5d8e90f7571b087ff8ff1e048153c195c84f719a58386b8",
+          "cumulative": "b642b5dda8e510c45b96e1add56abc16278d1107c4fe86017265471546a7e3fa",
+          "xml_sha256": "c841975a29ee438b8a5ca393722b09b09064372e5b6b2946c3bdcb59d9b5a660",
+          "roundtrip_sha256": "54985db2f5df3caccd3391c42ff991005d9334f987313d717a6fc209cd2761d6"
+        },
+        "R25": {
+          "isolated": "02785fe4528dbc162d78a7538b8417ec2916f538d683c7ca4961ddb6222f8a1e",
+          "cumulative": "e29255a7738efb22a8580b19feb2c626b2fc275aa741cdaf4bfbe4e68e50cfbb",
+          "xml_sha256": "b94e6c524e61cf56c562d432d36107f72b1ba6a467d7ba0e48753faeb39a0d3b",
+          "roundtrip_sha256": "cd7ad6caf79d4c07fe88ba1d696a87488db24638703c536d8c9b86859d759a05"
+        },
+        "R26": {
+          "isolated": "3cdfd774909c6f4fbadb09a6fb005dc869d2563863a32820920e9d2671d54477",
+          "cumulative": "734fbae90762fa2cf36da003eeaf1ffdedb224bef6b513f52becc9a321f2f72a",
+          "xml_sha256": "d2d8516b20225120210eacd77e92ff7e2b2d44e6d304eed5f8873de0dbce38a7",
+          "roundtrip_sha256": "5ad76e1371ceecab7406b7efaf846dec0b89ce37066d0b08e526f7d4143b44ed"
+        },
+        "R27": {
+          "isolated": "9c7f174eb2f739ae34170100099a7c58e2fb4f3be24bfa6b935dc8e6fe4ba961",
+          "cumulative": "c4514e142810d2ccf5613b0c339086cacdfe879121f24ba2d38515bc3545eb8d",
+          "xml_sha256": "96abfff5850ccabcabfe460b52637bc3025cead47adde86e248a7f6150becda1",
+          "roundtrip_sha256": "2d799cc60ae560cf391c626be5edcd45e63b377b526309d7470009d4f90bd888"
+        }
+      },
+      "isolated": 27,
+      "cumulative_significant": 6,
+      "opaque_blocks": 0,
+      "passed": true
+    },
+    "current_gameplay_manifest_sha256": "09e7347c459e801dd226c8a994807749936307db14351826d702ef7cdb0220a2",
+    "historical_media_preserved": true
   },
   "demo": {
     "source_project": "review-delivery/project-speed-save-v0.2.4",
@@ -234,7 +426,7 @@
     "demo_repository": "https://github.com/mrbrackebusch-code/apocalyptic-lists-demo",
     "demo_ref": "main"
   },
-  "claim_boundary": "Owner explicitly requested current game publication. Existing native compile and review evidence is retained; no fresh all-room Recipe, media, learner or classroom qualification is claimed. Public startup verification is a separate delivery receipt.",
+  "claim_boundary": "Complete current source/copy/media assembly. Native and affected public checks are engineering evidence; no human learner or classroom acceptance is claimed.",
   "files": [
     {
       "path": "bootstrap.ts",
@@ -263,13 +455,13 @@
     },
     {
       "path": "pxt.json",
-      "bytes": 928,
-      "sha256": "0ef1b2c3c27d0f69c742aa320e10cacb1a8e3467f49a1ea2a071fcb7055ad34d"
+      "bytes": 909,
+      "sha256": "c69c67993134e11b09d291376aa4d95f692bccfa95fe708696f856cc1e7ee8dc"
     },
     {
       "path": "README.md",
-      "bytes": 1290,
-      "sha256": "e68d2249ed80c7bb55b433aca98e0046c580cfabe0adde9225345a8b41013315"
+      "bytes": 931,
+      "sha256": "fce1e2b80f309eae851f23c7db42ea6fbf7a50f946566edb8513f80cde398d82"
     },
     {
       "path": "supplied-world/advice.ts",
