@@ -1,7 +1,7 @@
 {
   "schema": "AL-OWNER-PREVIEW-PUBLICATION-1",
   "kind": "demo",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
   "status": "experimental-owner-directed-preview",
   "primary_directive": "Conserve usage indefinitely. Preserve complete requested quality; reuse sufficient evidence and frozen Recipes/media.",
@@ -86,9 +86,9 @@
       {
         "file": "supplied-world/advice.ts",
         "source": "implementation/supplied-world/advice.ts",
-        "bytes": 24287,
-        "sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437",
-        "lf_sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437"
+        "bytes": 38734,
+        "sha256": "59e8f635a52236b384cf7cde131be543b60ade1ec2769282d12c56b6f74644e4",
+        "lf_sha256": "59e8f635a52236b384cf7cde131be543b60ade1ec2769282d12c56b6f74644e4"
       },
       {
         "file": "supplied-world/save.ts",
@@ -100,16 +100,16 @@
       {
         "file": "supplied-world/view.ts",
         "source": "implementation/supplied-world/view.ts",
-        "bytes": 42242,
-        "sha256": "8140734c7f6053df048e4e20f7f36757de68044f372b78aa99a9940f80accd3f",
-        "lf_sha256": "8140734c7f6053df048e4e20f7f36757de68044f372b78aa99a9940f80accd3f"
+        "bytes": 44482,
+        "sha256": "0ce0b6b0bdf6e733002dd6ccf30ab93202c469ba35b969059d38448acf5b8dbd",
+        "lf_sha256": "0ce0b6b0bdf6e733002dd6ccf30ab93202c469ba35b969059d38448acf5b8dbd"
       },
       {
         "file": "supplied-world/world.ts",
         "source": "implementation/supplied-world/world.ts",
-        "bytes": 42103,
-        "sha256": "5f8f8ae540f47920875c3bd9e6abc654ec69f9427fdb94422c2732584bb58f9d",
-        "lf_sha256": "5f8f8ae540f47920875c3bd9e6abc654ec69f9427fdb94422c2732584bb58f9d"
+        "bytes": 42965,
+        "sha256": "d74b5ff803445d06e2b9b04e0af937bcb9c7c892f2c5e9a5e760f940e2e9a8d0",
+        "lf_sha256": "d74b5ff803445d06e2b9b04e0af937bcb9c7c892f2c5e9a5e760f940e2e9a8d0"
       },
       {
         "file": "learner-api.ts",
@@ -133,7 +133,7 @@
         "lf_sha256": "1fabf282ae7a1a6725c81aabcdb8274820e12948ff02653c917f3903f974fabc"
       }
     ],
-    "customts_sha256": "dabaf9cf3891e13ed9faa5c9ba365838240e0100a3579844be5979ec401e1db4",
+    "customts_sha256": "b0b823c7061c895eee437c6fcc18497f949a05ca5d39305e2a0592fdae1e3856",
     "learner_main_comment_only": true,
     "learner_reference_callbacks": 0
   },
@@ -144,10 +144,10 @@
     "new_visual_media_qualification": "not_run"
   },
   "demo": {
-    "source_project": "review-delivery/project-staged-combat-v0.2.2",
-    "source_compile": "review-delivery/project-staged-combat-v0.2.2/COMPILE.json",
-    "compile_receipt_sha256": "71289719f0c45f6a6fc22ee041bb3460caf618003e736de53a5529d62675f6a1",
-    "binary_sha256": "e014b52b1d8d2bfa677f71ef7e7a35f917a898bdfe12961964b8d4faf430ed95",
+    "source_project": "review-delivery/project-operation-help-v0.2.3",
+    "source_compile": "review-delivery/project-operation-help-v0.2.3/COMPILE.json",
+    "compile_receipt_sha256": "998728fed04a2629dd52476d1995af6c9fdc30093cb92776bbf207f4f7e09280",
+    "binary_sha256": "d9c2304cd27fb3e5b02babc7ec2aad4371e21c22a390a424f873ca05feee3a22",
     "target": {
       "branch": "stable4.1",
       "tag": "v4.1.25",
@@ -188,8 +188,8 @@
       },
       {
         "file": "supplied-world/advice.ts",
-        "bytes": 24287,
-        "sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437"
+        "bytes": 38734,
+        "sha256": "59e8f635a52236b384cf7cde131be543b60ade1ec2769282d12c56b6f74644e4"
       },
       {
         "file": "supplied-world/save.ts",
@@ -198,13 +198,13 @@
       },
       {
         "file": "supplied-world/view.ts",
-        "bytes": 42242,
-        "sha256": "8140734c7f6053df048e4e20f7f36757de68044f372b78aa99a9940f80accd3f"
+        "bytes": 44482,
+        "sha256": "0ce0b6b0bdf6e733002dd6ccf30ab93202c469ba35b969059d38448acf5b8dbd"
       },
       {
         "file": "supplied-world/world.ts",
-        "bytes": 42103,
-        "sha256": "5f8f8ae540f47920875c3bd9e6abc654ec69f9427fdb94422c2732584bb58f9d"
+        "bytes": 42965,
+        "sha256": "d74b5ff803445d06e2b9b04e0af937bcb9c7c892f2c5e9a5e760f940e2e9a8d0"
       },
       {
         "file": "learner-api.ts",
@@ -262,17 +262,17 @@
     {
       "path": "pxt.json",
       "bytes": 909,
-      "sha256": "11c81519ec9f698df3bb6defc727afb2c882e767975232fdc9c4793750d27265"
+      "sha256": "d901900f16d1485aa67421e85f64afe305b47392da78653c7b0bc4ad13894d9a"
     },
     {
       "path": "README.md",
-      "bytes": 903,
-      "sha256": "e80425f54e427c812878e2867ff167b7a1993f90f2f093544636cc882300800d"
+      "bytes": 1043,
+      "sha256": "9c0c119fb99d80b1bddbcd195a281af4b4607d72330bbbc8d773db1bfd0dda0f"
     },
     {
       "path": "supplied-world/advice.ts",
-      "bytes": 24287,
-      "sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437"
+      "bytes": 38734,
+      "sha256": "59e8f635a52236b384cf7cde131be543b60ade1ec2769282d12c56b6f74644e4"
     },
     {
       "path": "supplied-world/art.ts",
@@ -301,13 +301,13 @@
     },
     {
       "path": "supplied-world/view.ts",
-      "bytes": 42242,
-      "sha256": "8140734c7f6053df048e4e20f7f36757de68044f372b78aa99a9940f80accd3f"
+      "bytes": 44482,
+      "sha256": "0ce0b6b0bdf6e733002dd6ccf30ab93202c469ba35b969059d38448acf5b8dbd"
     },
     {
       "path": "supplied-world/world.ts",
-      "bytes": 42103,
-      "sha256": "5f8f8ae540f47920875c3bd9e6abc654ec69f9427fdb94422c2732584bb58f9d"
+      "bytes": 42965,
+      "sha256": "d74b5ff803445d06e2b9b04e0af937bcb9c7c892f2c5e9a5e760f940e2e9a8d0"
     }
   ]
 }

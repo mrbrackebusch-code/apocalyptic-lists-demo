@@ -5,7 +5,7 @@ namespace apocView {
     const CENTER = 288
     const JOBS = ["Write plan", "Hold threat", "Rewrite", "Append", "Insert Ward", "Delay", "Remove Ward", "Repair last", "Remove first", "Remove last", "Banish first", "Find Ward", "Hold hazards", "Swap power", "Clear Wards", "Build counters", "Use reserve", "Steal power", "Hold one", "Reverse", "Find defense", "Move target", "Find + remove", "Delay", "Repair gaps", "Build recovery", "Hold hazards"]
     const OPS = ["create", "get", "set", "append", "insert", "prepend", "remove", "length", "remove", "remove", "remove", "find", "foreach", "swap", "foreach", "build", "transfer", "transfer", "get", "reverse", "find", "transfer", "find", "order", "foreach", "build", "foreach"]
-    const MENU = ["Use first altar", "Use second altar", "Release time", "Reset this attempt", "Retry this setup", "Try another setup", "Continue through the gate", "Revisit an unlocked room", "Room instructions + strategy", "Reset saved progress"]
+    const MENU = ["Use first altar", "Use second altar", "Release time", "Reset this attempt", "Retry this setup", "Try another setup", "Continue through the gate", "Revisit an unlocked room", "Altar help + room strategy", "Reset saved progress"]
     const MOVES = ["Strike", "Flurry", "Mend", "Ward", "Venom", "Reap", "Empower", "Wait"]
     let moveIcons: Image[] = []
     let actorRefs: Sprite[] = []
@@ -489,11 +489,22 @@ namespace apocView {
         if (apocWorld.uiEraseConfirm()) { centered("Reset saved expedition progress?", CENTER, 235, 2); centered("A confirm    B keep progress", CENTER, 270, 1); return }
         if (apocWorld.uiPicking()) { centered("Revisit an unlocked room", CENTER, 174, 9); centered("Room " + apocWorld.uiPickRoom(), CENTER, 230, 5); centered("Left/Right choose. A travel. B back.", CENTER, 278, 1); return }
         if (apocWorld.uiHelp()) {
-            centered("ROOM " + apocWorld.uiRoom() + " INSTRUCTIONS", CENTER, 134, 9)
-            let y = wrap(apocWorld.uiSpec().instruction, 83, 170, 408)
-            y = wrap("Walk to the glowing altar. A uses your current code. The crystal at the top releases time. B beside a moment previews only that action.", 83, y + 22, 408)
-            text("IF YOU NEED IT, HERE IS A STRATEGY", 83, y + 25, 5); wrap(apocAdvice.text(apocWorld.uiRoom(), apocWorld.uiVariant()), 83, y + 48, 408)
-            centered("B returns to the room", CENTER, 547, 9); return
+            const page = apocWorld.uiHelpPage(), pages = apocWorld.uiHelpPages(), strategy = page == pages - 1
+            centered("ROOM " + apocWorld.uiRoom() + (strategy ? " STRATEGY" : page == 0 ? " FIRST ALTAR" : " SECOND ALTAR"), CENTER, 134, 9)
+            if (strategy) {
+                let y = wrap(apocWorld.uiSpec().instruction, 83, 174, 408)
+                text("IF YOU NEED IT, HERE IS A STRATEGY", 83, y + 20, 5)
+                y = wrap(apocAdvice.text(apocWorld.uiRoom(), apocWorld.uiVariant()), 83, y + 45, 408)
+                wrap("A at an altar runs your code. The top crystal releases time. B beside a moment watches that action; B beside an altar explains its job.", 83, y + 24, 408, 11)
+            } else {
+                const station = page + 1
+                centered("HOW THIS LIST OPERATION WORKS", CENTER, 156, 5)
+                let y = wrap(apocAdvice.operation(apocWorld.uiRoom(), station), 83, 190, 408, 5)
+                y = wrap(apocAdvice.explain(apocWorld.uiRoom(), station), 83, y + 24, 408)
+                if (apocWorld.uiRoom() == 1) text("Leading Waits in this setup: " + apocWorld.uiSpec().numberHint, 83, y + 22, 9)
+            }
+            centered("PAGE " + (page + 1) + " / " + pages, CENTER, 515, 11)
+            centered("Left/Right pages    B returns", CENTER, 547, 9); return
         }
         centered("EXPEDITION MENU", CENTER, 132, 9)
         const progress = apocWorld.uiProgress(), spec = apocWorld.uiSpec()
@@ -508,6 +519,7 @@ namespace apocView {
     function footer(now: number): void {
         screen.fillRect(14, 690, WIDTH - 28, 25, 15)
         let s = apocWorld.uiNotice(), row = apocWorld.uiNearRow(), side = apocWorld.uiNearSide()
+        let controls = "Arrows walk | A select/use | B watch/help/menu | X = fallen by this moment"
         if (!apocWorld.uiPlaying() && !apocWorld.uiAnimating() && row >= 0) {
             const t = apocWorld.uiTrial(), moves = side == 0 ? t.lists.allyMoves : t.lists.enemyMoves, values = side == 0 ? t.lists.allyValues : t.lists.enemyValues
             const ref = chosen(t, side, row), a = actorFor(ref, t)
@@ -518,9 +530,22 @@ namespace apocView {
             const moves = side == 0 ? tMoves(before, 0) : tMoves(before, 1), move = row < moves.length ? moves[row] : "No move", phase = apocWorld.uiCombatProgress()
             s = apocWorld.uiCombatSkipped() ? "No action: " + apocWorld.uiSkipReason(side, row) : phase < .22 ? "The number charges " + move + "." : phase < .5 ? move + " travels to " + (actor ? shortName(actor.id) : "its actor") + "." : phase < .8 ? (actor ? shortName(actor.id) : "The actor") + " sends " + move + " to its target." : "The effect lands. This action is spent."
         } else if (apocWorld.uiAnimating()) s = activating(now) ? "These glowing pieces are about to move." : now - apocWorld.uiEditStarted() < apocWorld.uiEditDuration() ? "The changed pieces travel to their new positions." : "The room returns with the new future already resolved."
+        if (!apocWorld.uiAnimating() && !apocWorld.uiHelp() && !apocWorld.uiPicking() && !apocWorld.uiEraseConfirm()) {
+            const near = apocWorld.uiNearStation(), suggested = apocWorld.uiSuggestedStation(), menu = apocWorld.uiMenu()
+            let station = -1
+            if (menu && apocWorld.uiMenuIndex() <= 1 && (apocWorld.uiMenuIndex() == 0 || apocWorld.uiSpec().twoStations)) station = apocWorld.uiMenuIndex()
+            else if (!menu && (near == 0 || near == 1)) station = near
+            else if (!menu && near < 0 && row < 0 && (suggested == 0 || suggested == 1)) station = suggested
+            if (station >= 0) {
+                s = apocAdvice.operation(apocWorld.uiRoom(), station + 1)
+                controls = menu ? "A runs your altar code | B closes menu | Altar help is also in this menu" : near == station ? "A runs your altar code | B explains this list operation | Arrows walk" : "At the glowing altar: A use code, B explanation | B here opens the menu"
+                if (apocWorld.uiRoom() == 1) controls = "Leading Waits: " + apocWorld.uiSpec().numberHint + ". " + (menu ? "A use code | B close menu | Choose Altar help for steps" : near == station ? "A use code | B explains the operation" : "Approach the altar: A use code, B explanation")
+            }
+        }
+        if (apocWorld.uiHelp()) controls = "Left/Right turn the help pages | B returns | Reading does not use the altar"
         if (s.length > 89) s = s.substr(0, 86) + "..."
         tiny(s, 23, 695, apocWorld.uiPlaying() ? 5 : 1)
-        tiny("Arrows walk | A select/use | B watch/menu | X = fallen by this moment", 23, 706, 11)
+        tiny(controls, 23, 706, 11)
     }
     function tMoves(state: apocTypes.TrialSnapshot, side: number): string[] { return !state ? [] : side == 0 ? state.lists.allyMoves : state.lists.enemyMoves }
     export function draw(): void {

@@ -88,6 +88,8 @@ namespace apocWorld {
     let resultingVictory = false
     let eraseConfirm = false
     let help = false
+    let helpPage = 0
+    let helpReturnMenu = false
     let observerLockX = 171
     let observerLockY = 650
     let motionLocked = false
@@ -490,6 +492,8 @@ namespace apocWorld {
         previewing = false
         eraseConfirm = false
         help = false
+        helpPage = 0
+        helpReturnMenu = false
         updateNear()
     }
     function roomLabel(): string { return selectedRoom < 10 ? "0" + selectedRoom : "" + selectedRoom }
@@ -619,12 +623,19 @@ namespace apocWorld {
             if (completed && selectedRoom < 27) travel(selectedRoom + 1)
             else recent = selectedRoom == 27 && completed ? "The End - replay any earned room from B" : "EXIT locked: finish task AND win"
         } else if (n == 7) { roomPicker = true; pickerRoom = selectedRoom; lockObserver() }
-        else if (n == 8) { help = true; lockObserver(); recent = "Room instructions and advice. B returns to the room." }
+        else if (n == 8) openHelp(0, true)
         else if (n == 9) {
             eraseConfirm = true
             lockObserver()
             recent = "ERASE game progress? A confirm, B cancel"
         }
+    }
+    function openHelp(page: number, fromMenu: boolean): void {
+        helpPage = Math.constrain(page, 0, roomSpec && roomSpec.twoStations ? 2 : 1)
+        helpReturnMenu = fromMenu
+        help = true
+        lockObserver()
+        recent = "Left/Right turns help pages. B returns without using the altar."
     }
     function stationAction(): void {
         if (!observer) return
@@ -637,7 +648,12 @@ namespace apocWorld {
         } else recent = "Walk beside a moment to select it, or approach a room object. B opens the menu."
     }
     function menuUp(delta: number): void {
-        if (animationActive() || help || eraseConfirm) return
+        if (animationActive() || eraseConfirm) return
+        if (help) {
+            const pages = uiHelpPages()
+            helpPage = (helpPage + delta + pages) % pages
+            return
+        }
         if (roomPicker) { pickerRoom += delta; if (pickerRoom < 1) pickerRoom = 1; if (pickerRoom > progress.highestUnlocked) pickerRoom = progress.highestUnlocked }
         else if (menu) { menuIndex += delta; if (menuIndex < 0) menuIndex = 9; if (menuIndex > 9) menuIndex = 0 }
     }
@@ -683,18 +699,24 @@ namespace apocWorld {
         })
         controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             if (busy || animationActive()) return
-            if (help) { help = false; recent = "Back in the room. A selects a nearby moment; B previews it."; return }
+            if (help) {
+                help = false
+                if (helpReturnMenu) { menu = true; menuIndex = 8 }
+                recent = "Back from help. Your lists are unchanged."
+                return
+            }
             if (eraseConfirm) { eraseConfirm = false; recent = "Progress erase canceled"; return }
             if (roomPicker) { roomPicker = false; return }
             updateNear()
+            if (!menu && (nearStation == 0 || nearStation == 1)) { openHelp(nearStation, false); return }
             if (!menu && nearRow >= 0) { previewMoment(nearSide, nearRow); return }
             menu = !menu
             if (menu) { menuIndex = 0; lockObserver() }
         })
         controller.up.onEvent(ControllerButtonEvent.Pressed, function () { menuUp(-1) })
         controller.down.onEvent(ControllerButtonEvent.Pressed, function () { menuUp(1) })
-        controller.left.onEvent(ControllerButtonEvent.Pressed, function () { if (roomPicker) menuUp(-1) })
-        controller.right.onEvent(ControllerButtonEvent.Pressed, function () { if (roomPicker) menuUp(1) })
+        controller.left.onEvent(ControllerButtonEvent.Pressed, function () { if (roomPicker || help) menuUp(-1) })
+        controller.right.onEvent(ControllerButtonEvent.Pressed, function () { if (roomPicker || help) menuUp(1) })
         game.onUpdate(function () {
             if (observer) {
                 const lock = menu || roomPicker || animationActive() || busy || eraseConfirm || help
@@ -819,6 +841,8 @@ namespace apocWorld {
     export function uiEditRecord(): apocTypes.StationRecord { return editRecord }
     export function uiAnimating(): boolean { return animationActive() }
     export function uiHelp(): boolean { return help }
+    export function uiHelpPage(): number { return helpPage }
+    export function uiHelpPages(): number { return roomSpec && roomSpec.twoStations ? 3 : 2 }
     export function uiLastAction(): string { return lastAction }
     // Guide the physical interaction, without doing or grading the learner's edit.
     export function uiSuggestedStation(): number {
