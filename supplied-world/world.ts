@@ -10,10 +10,11 @@ namespace apocWorld {
     const LIMIT = 10
     const STATION_X = [86, 490, 288, 82, 288]
     const STATION_Y = [650, 650, 66, 84, 664]
-    const WALK_SPEED = 110
+    const WALK_SPEED = 220
     const HALF_MS = 900
     const PREVIEW_MS = 2300
-    const EDIT_MS = 1400
+    const EDIT_ACTIVATION_MS = 600
+    const EDIT_MS = 2000
     const RIPPLE_MS = 650
     const EDIT_FIZZLE_MS = 220
     const EDIT_REVEAL_MS = 260
@@ -542,9 +543,9 @@ namespace apocWorld {
         recent = "Preview only: " + (side == apocTypes.Side.Ally ? "ally" : "enemy") + " moment " + row
     }
     function tickAnimation(): void {
-        // Keep the old scene through the opening fizzle. Resolve exactly once
+        // Keep the old scene through activation and the opening fizzle. Resolve exactly once
         // while the edit pieces are isolated, before the room is revealed.
-        if (editForecastPending && control.millis() >= editStarted + EDIT_FIZZLE_MS) {
+        if (editForecastPending && control.millis() >= editStarted + EDIT_ACTIVATION_MS + EDIT_FIZZLE_MS) {
             editForecastPending = false
             refreshForecast()
         }
@@ -794,6 +795,7 @@ namespace apocWorld {
     }
     export function uiEditStarted(): number { return editStarted }
     export function uiEditDuration(): number { return EDIT_MS }
+    export function uiEditActivationDuration(): number { return EDIT_ACTIVATION_MS }
     export function uiEditFizzleDuration(): number { return EDIT_FIZZLE_MS }
     export function uiEditRevealDuration(): number { return EDIT_REVEAL_MS }
     export function uiRippleDuration(): number { return RIPPLE_MS }

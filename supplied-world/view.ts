@@ -229,9 +229,9 @@ namespace apocView {
                 const move = row < moves.length ? moves[row] : "", before = apocWorld.uiBefore(side, row) || apocWorld.uiTerminal()
                 let owner = actorFor(apocWorld.uiActionActor(side, row), before)
                 if (!owner && before) for (let n = 0; n < before.actors.length; n++) if (before.actors[n].side == side && before.actors[n].ability == move) owner = before.actors[n]
-                target(ref, px(side, 2), cy, side, selected, !!a && (!a.present || a.hp <= 0), !!a && a.held)
-                moveBubble(move, px(side, 0), cy, side, selected || marked, !!owner && (owner.hp <= 0 || !owner.present || owner.held))
-                powerBubble(row < values.length ? values[row] : -1, px(side, 1), cy, side, marked)
+                if (!activatingCell(side, 2, row, now)) target(ref, px(side, 2), cy, side, selected, !!a && (!a.present || a.hp <= 0), !!a && a.held)
+                if (!activatingCell(side, 0, row, now)) moveBubble(move, px(side, 0), cy, side, selected || marked, !!owner && (owner.hp <= 0 || !owner.present || owner.held))
+                if (!activatingCell(side, 1, row, now)) powerBubble(row < values.length ? values[row] : -1, px(side, 1), cy, side, marked)
                 if (playing && activeSide == side) { screen.drawCircle(px(side, 0), cy, 15, 1); screen.fillCircle(px(side, 0), cy - 19, 2, 5) }
             }
         }
@@ -255,6 +255,12 @@ namespace apocView {
         for (let i = 0; i < state.actors.length; i++) {
             const a = state.actors[i], k = actorIndex(a.sprite), body = k < 0 ? unknown : bodies[k]
             let x = actorX(a.side), y = actorY(a.sprite, state)
+            if (activatingActor(a.sprite, now)) {
+                const dt = now - motionStamp, lift = Math.sin(dt / apocWorld.uiEditActivationDuration() * Math.PI)
+                x += Math.sin(dt / 19) * 2 * lift; y -= lift * 5
+                screen.drawCircle(x, y, Math.idiv(body.height, 2) + 7, 5)
+                screen.drawCircle(x, y, Math.idiv(body.height, 2) + 10 + Math.sin(dt / 55) * 2, 1)
+            }
             if (apocWorld.uiPlaying() && event && event.actor == a.sprite) x += (a.side == 0 ? 1 : -1) * Math.sin(phase * Math.PI) * 8
             oval(screen, x, y + body.height / 2, 23, 6, 15, recipient == a.sprite ? 5 : 0)
             if (recipient == a.sprite) screen.drawCircle(x, y, Math.idiv(body.height, 2) + 6, event && helpful(event.move) ? 7 : 5)
@@ -287,23 +293,55 @@ namespace apocView {
         const label = outcome == "victory" ? "VICTORY" : outcome == "defeat" ? "DEFEAT" : outcome == "incomplete" ? "ENEMIES REMAIN" : "REPAIR PLAN"
         screen.fillRect(CENTER - 95, 628, 190, 15, 15); smallCentered("FORECAST: " + label, CENTER, 633, outcome == "victory" ? 9 : 3)
     }
-    function sources(state: apocTypes.TrialSnapshot): void {
+    function sources(state: apocTypes.TrialSnapshot, now: number): void {
         if (state.roster.length) {
             smallCentered("ROSTER", 143, 139, 9)
             for (let i = 0; i < state.roster.length; i++) {
+                if (activatingCell(0, 3, i, now)) continue
                 const x = 143, y = 180 + i * 40, k = actorIndex(state.roster[i]), a = actorFor(state.roster[i], state)
                 if (k >= 0) screen.drawTransparentImage(portraits[k], x - 14, y - 15)
                 screen.drawCircle(x, y, 16, a && a.held ? 10 : 11); if (a && !a.present) cross(x, y, 10)
             }
         } else if (state.sourceMoves.length) {
             smallCentered(apocWorld.uiRoom() == 17 ? "RESERVE" : "SOURCE", 143, 139, 9)
-            for (let i = 0; i < state.sourceMoves.length; i++) moveBubble(state.sourceMoves[i], 143, 180 + i * 40, 0, false, false)
+            for (let i = 0; i < state.sourceMoves.length; i++) if (!activatingCell(0, 4, i, now)) moveBubble(state.sourceMoves[i], 143, 180 + i * 40, 0, false, false)
+        }
+    }
+    function activating(now: number): boolean { return !!apocWorld.uiEditRecord() && now >= motionStamp && now < motionStamp + apocWorld.uiEditActivationDuration() }
+    function activatingCell(side: number, part: number, row: number, now: number): boolean {
+        if (!activating(now)) return false
+        for (let i = 0; i < motions.length; i++) {
+            const m = motions[i]
+            if (!m.merged && m.from >= 0 && m.fromSide == side && m.fromPart == part && m.from == row) return true
+        }
+        return false
+    }
+    function activatingActor(ref: Sprite, now: number): boolean {
+        if (!activating(now)) return false
+        const effects = apocWorld.uiEditRecord().effects
+        for (let i = 0; i < effects.length; i++) if (effects[i].actor == ref) return true
+        return false
+    }
+    function editActivation(now: number): void {
+        const dt = now - motionStamp, lift = Math.sin(dt / apocWorld.uiEditActivationDuration() * Math.PI)
+        for (let i = 0; i < motions.length; i++) {
+            const m = motions[i]
+            if (m.merged) continue
+            const baseX = m.fromPart >= 3 ? 143 : px(m.fromSide, m.fromPart)
+            const baseY = m.from >= 0 ? (m.fromPart >= 3 ? 180 + m.from * 40 : rowY(m.from)) : 650
+            const x = baseX + Math.sin(dt / 19) * 2 * lift, y = baseY - lift * 5
+            const radius = m.fromPart == 2 || m.fromPart == 3 ? 20 : m.fromPart == 1 ? 12 : 15
+            screen.drawCircle(x, y, radius + 3 + Math.sin(dt / 55) * 2, 5)
+            screen.drawCircle(x, y, radius + 6, 1)
+            if (m.part == 0 || m.part == 4) moveBubble(m.move, x, y, m.fromSide, true, false)
+            else if (m.part == 1) powerBubble(m.power, x, y, m.fromSide, true)
+            else target(m.target, x, y, m.fromSide, true, false, false)
         }
     }
     function editAnimation(now: number): void {
         const dt = now - motionStamp, duration = apocWorld.uiEditDuration()
         if (dt < 0 || dt >= duration) return
-        const opening = apocWorld.uiEditFizzleDuration()
+        const opening = apocWorld.uiEditActivationDuration() + apocWorld.uiEditFizzleDuration()
         const t = Math.constrain((dt - opening - 60) / (duration - opening - 160), 0, 1), q = t * t * (3 - 2 * t)
         for (let i = 0; i < motions.length; i++) {
             const m = motions[i]
@@ -428,7 +466,7 @@ namespace apocView {
             const ref = chosen(t, side, row), a = actorFor(ref, t)
             s = "A select | B watch: " + (row < moves.length ? moves[row] : "No move") + " " + (row < values.length ? "" + values[row] : "") + " > " + (ref == apocWorld.uiSentinel() ? "ALL" : a ? shortName(a.id) : "nothing")
         }
-        if (apocWorld.uiAnimating() && !apocWorld.uiPlaying()) s = now - apocWorld.uiEditStarted() < apocWorld.uiEditDuration() ? "The changed pieces travel to their new positions." : "The room returns with the new future already resolved."
+        if (apocWorld.uiAnimating() && !apocWorld.uiPlaying()) s = activating(now) ? "These glowing pieces are about to move." : now - apocWorld.uiEditStarted() < apocWorld.uiEditDuration() ? "The changed pieces travel to their new positions." : "The room returns with the new future already resolved."
         if (s.length > 89) s = s.substr(0, 86) + "..."
         tiny(s, 23, 695, apocWorld.uiPlaying() ? 5 : 1)
         tiny("Arrows walk | A select/use | B watch/menu | X = fallen by this moment", 23, 706, 11)
@@ -439,7 +477,7 @@ namespace apocView {
         if (!state || !spec) { screen.fill(15); text("Preparing the expedition...", 160, 330, 1); return }
         if (cachedRoom != apocWorld.uiRoom() || cachedVariant != apocWorld.uiVariant() || actorRefs[0] != state.actors[0].sprite) rebuild(state)
         prepareMotion()
-        const dt = now - apocWorld.uiEditStarted(), opening = apocWorld.uiEditFizzleDuration(), travelEnd = apocWorld.uiEditDuration(), reveal = apocWorld.uiEditRevealDuration(), record = apocWorld.uiEditRecord()
+        const dt = now - apocWorld.uiEditStarted(), activation = apocWorld.uiEditActivationDuration(), opening = activation + apocWorld.uiEditFizzleDuration(), travelEnd = apocWorld.uiEditDuration(), reveal = apocWorld.uiEditRevealDuration(), record = apocWorld.uiEditRecord()
         if (record && dt >= opening && dt < travelEnd) { editVeil(now); editAnimation(now); return }
         const openingEdit = !!record && dt >= 0 && dt < opening
         const scene = openingEdit ? record.before : state
@@ -447,11 +485,12 @@ namespace apocView {
         const label = "ROOM " + apocWorld.uiRoom() + " / 27  |  SETUP " + apocWorld.uiVariant()
         tiny(label, WIDTH - label.length * 6 - 16, 10, 9)
         smallCentered(apocWorld.uiPlaying() ? "TIME IN MOTION" : apocWorld.uiAnimating() ? "FUTURE CHANGING" : "TIME IS FROZEN", WIDTH - 77, 26, apocWorld.uiPlaying() ? 5 : 11)
-        timeline(scene, now); party(openingEdit ? scene : apocWorld.uiDisplay() || state, now); sources(scene); stations(now)
+        timeline(scene, now); party(openingEdit ? scene : apocWorld.uiDisplay() || state, now); sources(scene, now); stations(now)
         const step = apocWorld.uiStep(), frame = pandaFrames[apocWorld.uiDirection() * 4 + (step < 0 ? 0 : step % 3 + 1)], x = apocWorld.uiObserverX(), y = apocWorld.uiObserverY()
         oval(screen, x, y + 2, 9, 3, 15, 0); screen.drawTransparentImage(frame, x - 16, y - 30); smallCentered("YOU", x, y - 40, 1)
         combatAnimation(apocWorld.uiDisplay() || state); distortion(now); footer(now)
-        if (openingEdit) { screenFizzle(now, dt / opening); editAnimation(now) }
+        if (openingEdit && dt < activation) editActivation(now)
+        else if (openingEdit) { screenFizzle(now, (dt - activation) / apocWorld.uiEditFizzleDuration()); editAnimation(now) }
         else if (record && dt >= travelEnd && dt < travelEnd + reveal) screenFizzle(now, 1 - (dt - travelEnd) / reveal)
         if (apocWorld.uiMenu() || apocWorld.uiPicking() || apocWorld.uiEraseConfirm() || apocWorld.uiHelp()) menu()
     }

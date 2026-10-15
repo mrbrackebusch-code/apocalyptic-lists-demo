@@ -1,7 +1,7 @@
 {
   "schema": "AL-OWNER-PREVIEW-PUBLICATION-1",
   "kind": "demo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
   "status": "experimental-owner-directed-preview",
   "primary_directive": "Conserve usage indefinitely. Preserve complete requested quality; reuse sufficient evidence and frozen Recipes/media.",
@@ -100,16 +100,16 @@
       {
         "file": "supplied-world/view.ts",
         "source": "implementation/supplied-world/view.ts",
-        "bytes": 34425,
-        "sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9",
-        "lf_sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9"
+        "bytes": 37183,
+        "sha256": "35dfd531b5e44b27506a9887830fbdaf821de441568649f5659dffec3d119299",
+        "lf_sha256": "35dfd531b5e44b27506a9887830fbdaf821de441568649f5659dffec3d119299"
       },
       {
         "file": "supplied-world/world.ts",
         "source": "implementation/supplied-world/world.ts",
-        "bytes": 41118,
-        "sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac",
-        "lf_sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac"
+        "bytes": 41274,
+        "sha256": "12f136b22a16023a24167f56e6a3fa598364890bd0bee4d7da0e38d6f7b169d1",
+        "lf_sha256": "12f136b22a16023a24167f56e6a3fa598364890bd0bee4d7da0e38d6f7b169d1"
       },
       {
         "file": "learner-api.ts",
@@ -133,7 +133,7 @@
         "lf_sha256": "1fabf282ae7a1a6725c81aabcdb8274820e12948ff02653c917f3903f974fabc"
       }
     ],
-    "customts_sha256": "606d79017f795488770b3d687d473a1f5978372a9aa48fdc5d21713aa2fd5389",
+    "customts_sha256": "356017d561c5d1f38a01d7a3e0a0baebca0bb6af388e95057bffe78c7c5caefb",
     "learner_main_comment_only": true,
     "learner_reference_callbacks": 0
   },
@@ -144,10 +144,10 @@
     "new_visual_media_qualification": "not_run"
   },
   "demo": {
-    "source_project": "review-delivery/project-edit-isolation",
-    "source_compile": "review-delivery/project-edit-isolation/COMPILE.json",
-    "compile_receipt_sha256": "701732387f4fe980534bb714d49a04a04be147d58d678d85ba13c01aec11f2a2",
-    "binary_sha256": "3d1957ea6b18ceaaeb21f92b266b4065198b4aaa21c083149560362e07376593",
+    "source_project": "review-delivery/project-activation-v0.2.1",
+    "source_compile": "review-delivery/project-activation-v0.2.1/COMPILE.json",
+    "compile_receipt_sha256": "896c61ba9997bc8abc1fafbaac031e4cc17942902918335b89cac6604ba83c72",
+    "binary_sha256": "f93b44199df05f2a2b879056556e8697d3838d871d96ad56accd79c737df1b5b",
     "target": {
       "branch": "stable4.1",
       "tag": "v4.1.25",
@@ -198,13 +198,13 @@
       },
       {
         "file": "supplied-world/view.ts",
-        "bytes": 34425,
-        "sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9"
+        "bytes": 37183,
+        "sha256": "35dfd531b5e44b27506a9887830fbdaf821de441568649f5659dffec3d119299"
       },
       {
         "file": "supplied-world/world.ts",
-        "bytes": 41118,
-        "sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac"
+        "bytes": 41274,
+        "sha256": "12f136b22a16023a24167f56e6a3fa598364890bd0bee4d7da0e38d6f7b169d1"
       },
       {
         "file": "learner-api.ts",
@@ -262,7 +262,7 @@
     {
       "path": "pxt.json",
       "bytes": 909,
-      "sha256": "c590a514ce743e9788253dde6113c4c77e5456af248d447d54ecb998c3d73492"
+      "sha256": "8e231524c558dcece50ed9f55563d502fac2e1569aaaf2301298a34c621a84a2"
     },
     {
       "path": "README.md",
@@ -301,13 +301,13 @@
     },
     {
       "path": "supplied-world/view.ts",
-      "bytes": 34425,
-      "sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9"
+      "bytes": 37183,
+      "sha256": "35dfd531b5e44b27506a9887830fbdaf821de441568649f5659dffec3d119299"
     },
     {
       "path": "supplied-world/world.ts",
-      "bytes": 41118,
-      "sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac"
+      "bytes": 41274,
+      "sha256": "12f136b22a16023a24167f56e6a3fa598364890bd0bee4d7da0e38d6f7b169d1"
     }
   ]
 }
