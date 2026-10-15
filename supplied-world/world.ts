@@ -11,8 +11,9 @@ namespace apocWorld {
     const STATION_X = [86, 490, 288, 82, 288]
     const STATION_Y = [650, 650, 66, 84, 664]
     const WALK_SPEED = 220
-    const HALF_MS = 900
-    const PREVIEW_MS = 2300
+    const HALF_MS = 1600
+    const SKIP_MS = 650
+    const PREVIEW_HOLD_MS = 300
     const EDIT_ACTIVATION_MS = 600
     const EDIT_MS = 2000
     const RIPPLE_MS = 650
@@ -44,6 +45,7 @@ namespace apocWorld {
     let halfStarted = 0
     let halfDuration = HALF_MS
     let halfEventPos = 0
+    let consumed: boolean[] = []
     let previewing = false
     let previewReturn: apocTypes.TrialSnapshot = null
     let previewReturnEvent: apocTypes.TraceEvent = null
@@ -170,8 +172,10 @@ namespace apocWorld {
             // for each row; the centre line determines which half is selected.
             let distance = 24
             if (observer.x >= 157 && observer.x <= 419) for (let r = 0; r < 10; r++) {
+                const s = observer.x < 288 ? 0 : 1
+                if (uiCombatTimelineActive() && (uiCombatConsumed(s, r) || !halfFor(s, r))) continue
                 const d = Math.abs(observer.y - (114 + 54 * r))
-                if (d <= distance) { row = r; side = observer.x < 288 ? 0 : 1; distance = d }
+                if (d <= distance) { row = r; side = s; distance = d }
             }
             distance = 36 * 36 + 1
             for (let i = 0; i < STATION_X.length; i++) {
@@ -390,6 +394,7 @@ namespace apocWorld {
             editRecord = record
             editStarted = control.millis()
             editForecastPending = true
+            consumed = []
             lockObserver()
             recent = selectedRoom == 24 && station == apocTypes.Station.Primary ? "The list shifted. Use Rewrite next, then Run." :
                 selectedRoom == 27 && station == apocTypes.Station.Primary ? "Hazards held. Use Clear Wards next, then Run." :
@@ -414,6 +419,7 @@ namespace apocWorld {
         forecast = null
         terminal = null
         halves = []
+        consumed = []
         activeHalf = null
         previewReturn = null
         previewReturnEvent = null
@@ -520,9 +526,9 @@ namespace apocWorld {
         recentEvent = e
         applyTo(display, e)
     }
-    function beginHalf(half: HalfAction, duration: number): void {
+    function beginHalf(half: HalfAction): void {
         activeHalf = half
-        halfDuration = duration
+        halfDuration = (half.fizzle ? SKIP_MS : HALF_MS) + (previewing ? PREVIEW_HOLD_MS * 2 : 0)
         halfStarted = control.millis()
         halfEventPos = 0
         recentEvent = null
@@ -539,7 +545,7 @@ namespace apocWorld {
         previewReturnEvent = recentEvent
         previewing = true
         lockObserver()
-        beginHalf(half, PREVIEW_MS)
+        beginHalf(half)
         recent = "Preview only: " + (side == apocTypes.Side.Ally ? "ally" : "enemy") + " moment " + row
     }
     function tickAnimation(): void {
@@ -551,14 +557,13 @@ namespace apocWorld {
         }
         if ((!playing && !previewing) || !activeHalf) return
         const elapsed = control.millis() - halfStarted
-        const phase = Math.min(1, elapsed / halfDuration)
-        // Preview holds its exact before/after states around a single action.
-        // Full playback approaches, applies events, and returns within 900 ms.
-        const eventPhase = previewing ? Math.max(0, Math.min(1, (elapsed - 650) / 850)) :
-            Math.max(0, Math.min(1, (phase - 0.25) / 0.5))
+        const phase = uiCombatProgress()
+        // The number, move and actor travel before impact. Preserve actual trace
+        // order, but apply HP/marks only as effects land in the final action stage.
+        const eventPhase = phase >= 0.94 ? 1 : Math.max(0, (phase - 0.80) / 0.14)
         const count = Math.min(activeHalf.events.length, Math.floor(eventPhase * activeHalf.events.length))
         while (halfEventPos < count) applyTrace(activeHalf.events[halfEventPos++])
-        if (phase < 1) return
+        if (elapsed < halfDuration) return
         while (halfEventPos < activeHalf.events.length) applyTrace(activeHalf.events[halfEventPos++])
         display = apocCombat.cloneTrial(activeHalf.after)
         if (previewing) {
@@ -570,8 +575,9 @@ namespace apocWorld {
             activeHalf = null
             recent = "Preview finished. The plan and saved progress are unchanged."
         } else {
+            consumed[activeHalf.side * LIMIT + activeHalf.row] = true
             halfIndex++
-            if (halfIndex < halves.length) beginHalf(halves[halfIndex], HALF_MS)
+            if (halfIndex < halves.length) beginHalf(halves[halfIndex])
             else { activeHalf = null; doneWithTrace() }
         }
     }
@@ -593,11 +599,12 @@ namespace apocWorld {
         display = apocCombat.cloneTrial(frozen)
         recentEvent = null
         playing = true
+        consumed = []
         lockObserver()
         halfIndex = 0
         recent = "The frozen plan plays once, one half-action at a time."
         busy = false
-        if (halves.length) beginHalf(halves[0], HALF_MS)
+        if (halves.length) beginHalf(halves[0])
         else doneWithTrace()
     }
     function useAction(n: number): void {
@@ -781,18 +788,28 @@ namespace apocWorld {
     }
     export function uiActiveRow(): number { return activeHalf ? activeHalf.row : selectedRow }
     export function uiActiveSide(): number { return activeHalf ? activeHalf.side : selectedSide }
-    export function uiPhase(): number {
+    export function uiCombatProgress(): number {
         if (!activeHalf) return 0
-        const elapsed = control.millis() - halfStarted
-        return previewing ? Math.max(0, Math.min(1, (elapsed - 650) / 850)) : Math.max(0, Math.min(1, elapsed / halfDuration))
+        const elapsed = control.millis() - halfStarted - (previewing ? PREVIEW_HOLD_MS : 0)
+        return Math.max(0, Math.min(1, elapsed / (activeHalf.fizzle ? SKIP_MS : HALF_MS)))
+    }
+    export function uiPhase(): number { return uiCombatProgress() }
+    export function uiCombatSkipped(): boolean { return !!activeHalf && activeHalf.fizzle }
+    export function uiCombatConsumed(side: number, row: number): boolean {
+        return side >= 0 && side < 2 && row >= 0 && row < LIMIT && !!consumed[side * LIMIT + row]
+    }
+    export function uiMomentConsumed(row: number): boolean {
+        const ally = halfFor(0, row), enemy = halfFor(1, row)
+        return (!!ally || !!enemy) && (!ally || uiCombatConsumed(0, row)) && (!enemy || uiCombatConsumed(1, row))
+    }
+    export function uiCombatTimelineActive(): boolean {
+        if (previewing) return false
+        if (playing) return true
+        for (let i = 0; i < LIMIT * 2; i++) if (consumed[i]) return true
+        return false
     }
     export function uiPreview(): boolean { return previewing }
-    export function uiFizzle(): boolean {
-        if (!activeHalf) return false
-        const elapsed = control.millis() - halfStarted
-        if (previewing) return elapsed < 200 || elapsed >= 2100 || (activeHalf.fizzle && elapsed >= 960 && elapsed < 1120)
-        return activeHalf.fizzle && elapsed >= 315 && elapsed < 525
-    }
+    export function uiFizzle(): boolean { return false }
     export function uiEditStarted(): number { return editStarted }
     export function uiEditDuration(): number { return EDIT_MS }
     export function uiEditActivationDuration(): number { return EDIT_ACTIVATION_MS }
