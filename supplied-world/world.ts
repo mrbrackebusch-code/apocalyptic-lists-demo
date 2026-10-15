@@ -8,12 +8,14 @@ namespace SpriteKind {
 }
 namespace apocWorld {
     const LIMIT = 10
-    const STATION_X = [86, 490, 288, 82, 288]
-    const STATION_Y = [650, 650, 66, 84, 664]
+    const STATION_X = [86, 490, 288, 82, 288, 490]
+    const STATION_Y = [650, 650, 66, 84, 664, 84]
+    const SPEED_RATES = [0.5, 1, 2, 4]
+    const SPEED_LABELS = ["0.5x", "1x", "2x", "4x"]
     const WALK_SPEED = 220
-    const HALF_MS = 1600
-    const SKIP_MS = 650
-    const PREVIEW_HOLD_MS = 300
+    const HALF_MS = 3200
+    const SKIP_MS = 1000
+    const PREVIEW_HOLD_MS = 500
     const EDIT_ACTIVATION_MS = 600
     const EDIT_MS = 2000
     const RIPPLE_MS = 650
@@ -94,6 +96,9 @@ namespace apocWorld {
     let observerLockY = 650
     let motionLocked = false
     let direction = 0
+    let speedIndex = 1
+    let animationBaseWall = 0
+    let animationBaseVirtual = 0
 
     function copyStrings(a: string[]): string[] { let b: string[] = []; if (a) for (let i = 0; i < a.length; i++) b.push(a[i]); return b }
     function copyNumbers(a: number[]): number[] { let b: number[] = []; if (a) for (let i = 0; i < a.length; i++) b.push(a[i]); return b }
@@ -161,7 +166,7 @@ namespace apocWorld {
         terminal = apocCombat.cloneTrial(state)
     }
     function animationActive(): boolean {
-        return playing || previewing || control.millis() < editStarted + EDIT_MS + RIPPLE_MS
+        return playing || previewing || uiAnimationTime() < editStarted + EDIT_MS + RIPPLE_MS
     }
     function lockObserver(): void {
         if (observer) { observerLockX = observer.x; observerLockY = observer.y }
@@ -187,7 +192,7 @@ namespace apocWorld {
                 if (d < distance) { station = i; distance = d }
             }
         }
-        if (row != nearRow || side != nearSide) hoverStarted = control.millis()
+        if (row != nearRow || side != nearSide) hoverStarted = uiAnimationTime()
         nearRow = row; nearSide = side; nearStation = station
     }
     function active(): boolean { return invoking && busy && draft != null }
@@ -394,7 +399,7 @@ namespace apocWorld {
             goal = null
             resultingVictory = false
             editRecord = record
-            editStarted = control.millis()
+            editStarted = uiAnimationTime()
             editForecastPending = true
             consumed = []
             lockObserver()
@@ -533,7 +538,7 @@ namespace apocWorld {
     function beginHalf(half: HalfAction): void {
         activeHalf = half
         halfDuration = (half.fizzle ? SKIP_MS : HALF_MS) + (previewing ? PREVIEW_HOLD_MS * 2 : 0)
-        halfStarted = control.millis()
+        halfStarted = uiAnimationTime()
         halfEventPos = 0
         recentEvent = null
         display = apocCombat.cloneTrial(half.before)
@@ -555,12 +560,12 @@ namespace apocWorld {
     function tickAnimation(): void {
         // Keep the old scene through activation and the opening fizzle. Resolve exactly once
         // while the edit pieces are isolated, before the room is revealed.
-        if (editForecastPending && control.millis() >= editStarted + EDIT_ACTIVATION_MS + EDIT_FIZZLE_MS) {
+        if (editForecastPending && uiAnimationTime() >= editStarted + EDIT_ACTIVATION_MS + EDIT_FIZZLE_MS) {
             editForecastPending = false
             refreshForecast()
         }
         if ((!playing && !previewing) || !activeHalf) return
-        const elapsed = control.millis() - halfStarted
+        const elapsed = uiAnimationTime() - halfStarted
         const phase = uiCombatProgress()
         // The number, move and actor travel before impact. Preserve actual trace
         // order, but apply HP/marks only as effects land in the final action stage.
@@ -628,7 +633,16 @@ namespace apocWorld {
             eraseConfirm = true
             lockObserver()
             recent = "ERASE game progress? A confirm, B cancel"
-        }
+        } else if (n == 10) cycleSpeed()
+    }
+    function cycleSpeed(): void {
+        if (busy || animationActive() || help || roomPicker || eraseConfirm) return
+        const wall = control.millis()
+        animationBaseVirtual += (wall - animationBaseWall) * SPEED_RATES[speedIndex]
+        animationBaseWall = wall
+        speedIndex = (speedIndex + 1) % SPEED_RATES.length
+        apocSave.storeSpeed(speedIndex)
+        recent = "Animation speed " + uiSpeedLabel() + ". Walking speed is unchanged."
     }
     function openHelp(page: number, fromMenu: boolean): void {
         helpPage = Math.constrain(page, 0, roomSpec && roomSpec.twoStations ? 2 : 1)
@@ -640,7 +654,7 @@ namespace apocWorld {
     function stationAction(): void {
         if (!observer) return
         updateNear()
-        if (nearStation >= 0) { useAction(nearStation == 4 ? 6 : nearStation); return }
+        if (nearStation >= 0) { useAction(nearStation == 5 ? 10 : nearStation == 4 ? 6 : nearStation); return }
         if (nearRow >= 0) {
             selectedRow = nearRow
             selectedSide = nearSide
@@ -655,11 +669,14 @@ namespace apocWorld {
             return
         }
         if (roomPicker) { pickerRoom += delta; if (pickerRoom < 1) pickerRoom = 1; if (pickerRoom > progress.highestUnlocked) pickerRoom = progress.highestUnlocked }
-        else if (menu) { menuIndex += delta; if (menuIndex < 0) menuIndex = 9; if (menuIndex > 9) menuIndex = 0 }
+        else if (menu) { menuIndex += delta; if (menuIndex < 0) menuIndex = 10; if (menuIndex > 10) menuIndex = 0 }
     }
     export function start(): void {
         if (begun) return
         begun = true
+        speedIndex = apocSave.loadSpeed()
+        animationBaseWall = control.millis()
+        animationBaseVirtual = 0
         progress = apocSave.load()
         allTarget = sprites.create(image.create(1, 1), SpriteKind.ApocTargetMarker)
         allTarget.setFlag(SpriteFlag.Invisible, true)
@@ -768,6 +785,10 @@ namespace apocWorld {
     export function uiSentinel(): Sprite { return allTarget }
     export function uiObserverX(): number { return observer ? observer.x : 171 }
     export function uiObserverY(): number { return observer ? observer.y : 650 }
+    export function uiAnimationTime(): number { return animationBaseVirtual + (control.millis() - animationBaseWall) * SPEED_RATES[speedIndex] }
+    export function uiSpeedLabel(): string { return SPEED_LABELS[speedIndex] }
+    export function uiSpeedMultiplier(): number { return SPEED_RATES[speedIndex] }
+    export function uiCombatBaseDuration(): number { return HALF_MS }
     export function uiDirection(): number { return direction }
     export function uiStep(): number {
         return observer && !motionLocked && (Math.abs(observer.vx) > 4 || Math.abs(observer.vy) > 4) ? Math.idiv(control.millis(), 140) % 2 : -1
@@ -812,7 +833,7 @@ namespace apocWorld {
     export function uiActiveSide(): number { return activeHalf ? activeHalf.side : selectedSide }
     export function uiCombatProgress(): number {
         if (!activeHalf) return 0
-        const elapsed = control.millis() - halfStarted - (previewing ? PREVIEW_HOLD_MS : 0)
+        const elapsed = uiAnimationTime() - halfStarted - (previewing ? PREVIEW_HOLD_MS : 0)
         return Math.max(0, Math.min(1, elapsed / (activeHalf.fizzle ? SKIP_MS : HALF_MS)))
     }
     export function uiPhase(): number { return uiCombatProgress() }

@@ -5,7 +5,7 @@ namespace apocView {
     const CENTER = 288
     const JOBS = ["Write plan", "Hold threat", "Rewrite", "Append", "Insert Ward", "Delay", "Remove Ward", "Repair last", "Remove first", "Remove last", "Banish first", "Find Ward", "Hold hazards", "Swap power", "Clear Wards", "Build counters", "Use reserve", "Steal power", "Hold one", "Reverse", "Find defense", "Move target", "Find + remove", "Delay", "Repair gaps", "Build recovery", "Hold hazards"]
     const OPS = ["create", "get", "set", "append", "insert", "prepend", "remove", "length", "remove", "remove", "remove", "find", "foreach", "swap", "foreach", "build", "transfer", "transfer", "get", "reverse", "find", "transfer", "find", "order", "foreach", "build", "foreach"]
-    const MENU = ["Use first altar", "Use second altar", "Release time", "Reset this attempt", "Retry this setup", "Try another setup", "Continue through the gate", "Revisit an unlocked room", "Altar help + room strategy", "Reset saved progress"]
+    const MENU = ["Use first altar", "Use second altar", "Release time", "Reset this attempt", "Retry this setup", "Try another setup", "Continue through the gate", "Revisit an unlocked room", "Altar help + room strategy", "Reset saved progress", "Animation speed"]
     const MOVES = ["Strike", "Flurry", "Mend", "Ward", "Venom", "Reap", "Empower", "Wait"]
     let moveIcons: Image[] = []
     let actorRefs: Sprite[] = []
@@ -65,6 +65,7 @@ namespace apocView {
         for (let i = 0; i < 10; i++) digits.push(apocArt.digit(i))
         const names = ["altar-primary", "altar-secondary", "clock-crystal", "fountain-reset", "exit-gate"]
         for (let i = 0; i < names.length; i++) props.push(apocArt.prop(names[i]))
+        props.push(resize(apocArt.move("Wait"), 32, 32))
         for (let d = 0; d < 4; d++) for (let s = -1; s < 3; s++) pandaFrames.push(apocArt.observerFrame(d, s))
         unknown = resize(apocArt.move("?"), 16, 16); allPortrait = resize(apocArt.targetAll(), 24, 24)
         for (let i = 0; i < 3; i++) {
@@ -290,15 +291,16 @@ namespace apocView {
             if (a.trait != "Plain") smallCentered(a.trait, x, hpY + 19, 11)
         }
     }
-    export function stationLabel(i: number): string { return i == 0 ? JOBS[apocWorld.uiRoom() - 1] : i == 1 ? (apocWorld.uiRoom() == 24 ? "Rewrite" : "Clear Wards") : i == 2 ? "Release time" : i == 3 ? "Reset" : "Exit" }
-    export function stationIcon(i: number): string { return i == 0 ? OPS[apocWorld.uiRoom() - 1] : i == 1 ? "set" : i == 2 ? "run" : i == 3 ? "reset" : "exit" }
+    export function stationLabel(i: number): string { return i == 0 ? JOBS[apocWorld.uiRoom() - 1] : i == 1 ? (apocWorld.uiRoom() == 24 ? "Rewrite" : "Clear Wards") : i == 2 ? "Release time" : i == 3 ? "Reset" : i == 5 ? "Speed " + apocWorld.uiSpeedLabel() : "Exit" }
+    export function stationIcon(i: number): string { return i == 0 ? OPS[apocWorld.uiRoom() - 1] : i == 1 ? "set" : i == 2 ? "run" : i == 3 ? "reset" : i == 5 ? "speed" : "exit" }
     function stations(now: number): void {
-        const xs = [86, 490, 288, 82, 288], ys = [650, 650, 66, 84, 664], spec = apocWorld.uiSpec(), suggested = apocWorld.uiSuggestedStation()
-        for (let i = 0; i < 5; i++) {
+        const xs = [86, 490, 288, 82, 288, 490], ys = [650, 650, 66, 84, 664, 84], spec = apocWorld.uiSpec(), suggested = apocWorld.uiSuggestedStation()
+        for (let i = 0; i < 6; i++) {
             if (i == 1 && !spec.twoStations) continue
             const x = xs[i], y = ys[i], near = apocWorld.uiNearStation() == i, glow = i == suggested
             if (glow || near) oval(screen, x, y + 6, i == 2 ? 28 : 24, 8, 8, now % 900 < 550 ? 5 : 11)
             screen.drawTransparentImage(props[i], x - 16, y - 28 + (i == 2 ? Math.sin(now / 340) * 2 : 0))
+            if (i == 5) smallCentered("ANIMATION", x, 46, 11)
             smallCentered(stationLabel(i), x, y + (i == 2 ? 12 : 14), glow || near ? 5 : 1)
         }
         const forecast = apocWorld.uiForecast(), outcome = forecast ? forecast.status : "invalid"
@@ -495,7 +497,7 @@ namespace apocView {
                 let y = wrap(apocWorld.uiSpec().instruction, 83, 174, 408)
                 text("IF YOU NEED IT, HERE IS A STRATEGY", 83, y + 20, 5)
                 y = wrap(apocAdvice.text(apocWorld.uiRoom(), apocWorld.uiVariant()), 83, y + 45, 408)
-                wrap("A at an altar runs your code. The top crystal releases time. B beside a moment watches that action; B beside an altar explains its job.", 83, y + 24, 408, 11)
+                wrap("A at an altar runs your code. The top crystal releases time. B beside a moment watches that action; B beside an altar explains its job. A at the hourglass changes animation speed.", 83, y + 24, 408, 11)
             } else {
                 const station = page + 1
                 centered("HOW THIS LIST OPERATION WORKS", CENTER, 156, 5)
@@ -511,7 +513,7 @@ namespace apocView {
         for (let i = 0; i < MENU.length; i++) {
             const y = 168 + i * 29, locked = (i == 1 && !spec.twoStations) || (i == 6 && (progress.completedMask & (1 << (apocWorld.uiRoom() - 1))) == 0)
             if (i == apocWorld.uiMenuIndex()) screen.fillRect(76, y - 5, WIDTH - 152, 23, 8)
-            text((i == apocWorld.uiMenuIndex() ? "> " : "  ") + MENU[i], 86, y, locked ? 11 : 1)
+            text((i == apocWorld.uiMenuIndex() ? "> " : "  ") + (i == 10 ? "Animation speed: " + apocWorld.uiSpeedLabel() : MENU[i]), 86, y, locked ? 11 : 1)
         }
         centered("A choose    B close", CENTER, 482, 9)
         for (let i = 0; i < apocArt.creditCount(); i++) tiny(apocArt.creditLine(i), 83, 515 + i * 13, 11)
@@ -541,6 +543,10 @@ namespace apocView {
                 controls = menu ? "A runs your altar code | B closes menu | Altar help is also in this menu" : near == station ? "A runs your altar code | B explains this list operation | Arrows walk" : "At the glowing altar: A use code, B explanation | B here opens the menu"
                 if (apocWorld.uiRoom() == 1) controls = "Leading Waits: " + apocWorld.uiSpec().numberHint + ". " + (menu ? "A use code | B close menu | Choose Altar help for steps" : near == station ? "A use code | B explains the operation" : "Approach the altar: A use code, B explanation")
             }
+            if (near == 5 || (menu && apocWorld.uiMenuIndex() == 10)) {
+                s = "Animation speed: " + apocWorld.uiSpeedLabel() + ". Cycle 0.5x > 1x > 2x > 4x."
+                controls = menu ? "A changes animation speed | B closes menu | Walking speed stays the same" : "A changes animation speed | B opens menu | Set it before releasing time"
+            }
         }
         if (apocWorld.uiHelp()) controls = "Left/Right turn the help pages | B returns | Reading does not use the altar"
         if (s.length > 89) s = s.substr(0, 86) + "..."
@@ -550,7 +556,7 @@ namespace apocView {
     function tMoves(state: apocTypes.TrialSnapshot, side: number): string[] { return !state ? [] : side == 0 ? state.lists.allyMoves : state.lists.enemyMoves }
     export function draw(): void {
         init()
-        const state = apocWorld.uiTrial(), spec = apocWorld.uiSpec(), now = control.millis()
+        const state = apocWorld.uiTrial(), spec = apocWorld.uiSpec(), now = apocWorld.uiAnimationTime()
         if (!state || !spec) { screen.fill(15); text("Preparing the expedition...", 160, 330, 1); return }
         if (cachedRoom != apocWorld.uiRoom() || cachedVariant != apocWorld.uiVariant() || actorRefs[0] != state.actors[0].sprite) rebuild(state)
         prepareMotion()

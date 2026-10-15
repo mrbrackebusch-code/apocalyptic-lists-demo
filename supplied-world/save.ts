@@ -1,11 +1,20 @@
-// Only one game-specific record; does not persist code, actors or drafts.
+// Game-specific progress and speed only; never code, actors or drafts.
 namespace apocSave {
     const KEY = "al.progress.v1"
+    const SPEED_KEY = "al.speed.v1"
     let recovery = ""
     let future = false
 
     export function notice(): string { return recovery }
     export function isFuture(): boolean { return future }
+    export function hasProgress(): boolean { return !!settings.readNumberArray(KEY) }
+    export function loadSpeed(): number {
+        const data = settings.readNumberArray(SPEED_KEY)
+        return data && data.length == 1 && integer(data[0]) && data[0] <= 3 ? data[0] : 1
+    }
+    export function storeSpeed(index: number): void {
+        if (integer(index) && index <= 3) settings.writeNumberArray(SPEED_KEY, [index])
+    }
 
     function fresh(): apocTypes.Progress {
         return new apocTypes.Progress()
@@ -55,8 +64,10 @@ namespace apocSave {
         settings.writeNumberArray(KEY, [1, value.highestUnlocked, value.resumeRoom, value.completedMask])
     }
     export function clear(): void {
-        settings.remove(KEY)
         future = false
+        // A valid fresh record distinguishes explicit erase from first launch.
+        // Demo startup must not turn an erased expedition into an unlocked one.
+        store(fresh())
         recovery = "Progress erased; R01 ready"
     }
 }

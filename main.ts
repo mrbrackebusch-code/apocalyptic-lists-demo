@@ -270,9 +270,13 @@ apocalypse.onInteract(apocTypes.Room.R27, apocTypes.Station.Secondary, function 
     apocalypse.setMoves(apocTypes.Side.Enemy, enemyMoves)
 })
 
-let visualReviewProgress = new apocTypes.Progress()
-visualReviewProgress.highestUnlocked = 27
-visualReviewProgress.resumeRoom = 14
-visualReviewProgress.completedMask = (1 << 26) - 1
-apocSave.store(visualReviewProgress)
+// Seed this review only on first launch. Existing earned, reset or future
+// progress records remain owned by apocSave; restarts resume the saved room.
+if (!apocSave.hasProgress()) {
+    let visualReviewProgress = new apocTypes.Progress()
+    visualReviewProgress.highestUnlocked = 27
+    visualReviewProgress.resumeRoom = 14
+    visualReviewProgress.completedMask = (1 << 26) - 1
+    apocSave.store(visualReviewProgress)
+}
 apocWorld.start()
