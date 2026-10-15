@@ -1,0 +1,313 @@
+{
+  "schema": "AL-OWNER-PREVIEW-PUBLICATION-1",
+  "kind": "demo",
+  "version": "0.2.0",
+  "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
+  "status": "experimental-owner-directed-preview",
+  "primary_directive": "Conserve usage indefinitely. Preserve complete requested quality; reuse sufficient evidence and frozen Recipes/media.",
+  "baseline": {
+    "version": "0.1.0",
+    "release_manifest_sha256": "ff9cd12bc88af10df673b7731e2b5e68b6e10ca980fe9b8dac17dbf059b49084",
+    "files": 224
+  },
+  "runtime": {
+    "source_order": [
+      "contracts.ts",
+      "config.ts",
+      "supplied-world/rooms.ts",
+      "supplied-world/combat.ts",
+      "supplied-world/goals.ts",
+      "supplied-world/art.ts",
+      "supplied-world/advice.ts",
+      "supplied-world/save.ts",
+      "supplied-world/view.ts",
+      "supplied-world/world.ts",
+      "learner-api.ts",
+      "main.ts",
+      "bootstrap.ts"
+    ],
+    "supplied_order": [
+      "contracts.ts",
+      "config.ts",
+      "supplied-world/rooms.ts",
+      "supplied-world/combat.ts",
+      "supplied-world/goals.ts",
+      "supplied-world/art.ts",
+      "supplied-world/advice.ts",
+      "supplied-world/save.ts",
+      "supplied-world/view.ts",
+      "supplied-world/world.ts",
+      "learner-api.ts",
+      "bootstrap.ts"
+    ],
+    "source_files": [
+      {
+        "file": "contracts.ts",
+        "source": "handoffs/implementation-2026-10-12/prepared/contracts.ts",
+        "bytes": 4720,
+        "sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f",
+        "lf_sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+      },
+      {
+        "file": "config.ts",
+        "source": "implementation/config.ts",
+        "bytes": 429,
+        "sha256": "09f15a5eeca1d59942420be6af2c49de66467750bc771a8481a71944d6521965",
+        "lf_sha256": "09f15a5eeca1d59942420be6af2c49de66467750bc771a8481a71944d6521965"
+      },
+      {
+        "file": "supplied-world/rooms.ts",
+        "source": "implementation/supplied-world/rooms.ts",
+        "bytes": 117907,
+        "sha256": "64a9f05a4bc284e93c1159f546ff5bc05f7f8bcca0d2f07420dc19959c990d81",
+        "lf_sha256": "64a9f05a4bc284e93c1159f546ff5bc05f7f8bcca0d2f07420dc19959c990d81"
+      },
+      {
+        "file": "supplied-world/combat.ts",
+        "source": "implementation/supplied-world/combat.ts",
+        "bytes": 22051,
+        "sha256": "9d5554f617002aefc515e7dd9ed9fb6a974d2aaff920f9bce9fab9d4a34ff2d3",
+        "lf_sha256": "9d5554f617002aefc515e7dd9ed9fb6a974d2aaff920f9bce9fab9d4a34ff2d3"
+      },
+      {
+        "file": "supplied-world/goals.ts",
+        "source": "implementation/supplied-world/goals.ts",
+        "bytes": 73377,
+        "sha256": "0a91768e7b3e51e1e9f72e2ce3d39c76cd8af7e52205c9b752853c6f5d998b4b",
+        "lf_sha256": "0a91768e7b3e51e1e9f72e2ce3d39c76cd8af7e52205c9b752853c6f5d998b4b"
+      },
+      {
+        "file": "supplied-world/art.ts",
+        "source": "implementation/supplied-world/art.ts",
+        "bytes": 385985,
+        "sha256": "be9695d0a41d0f5d572cfa71d30f322cfc08146c5b89d2bf251196e5e75c730f",
+        "lf_sha256": "91babe72a116e3f8245dde6ce7689b75faecc0b3a40318036d0be687d3a11df5"
+      },
+      {
+        "file": "supplied-world/advice.ts",
+        "source": "implementation/supplied-world/advice.ts",
+        "bytes": 24287,
+        "sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437",
+        "lf_sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437"
+      },
+      {
+        "file": "supplied-world/save.ts",
+        "source": "implementation/supplied-world/save.ts",
+        "bytes": 2640,
+        "sha256": "2d1032a4781adb2bf78ee0b6527a44256905d2f29e8efdfbcbf8c9fe8d783984",
+        "lf_sha256": "2d1032a4781adb2bf78ee0b6527a44256905d2f29e8efdfbcbf8c9fe8d783984"
+      },
+      {
+        "file": "supplied-world/view.ts",
+        "source": "implementation/supplied-world/view.ts",
+        "bytes": 34425,
+        "sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9",
+        "lf_sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9"
+      },
+      {
+        "file": "supplied-world/world.ts",
+        "source": "implementation/supplied-world/world.ts",
+        "bytes": 41118,
+        "sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac",
+        "lf_sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac"
+      },
+      {
+        "file": "learner-api.ts",
+        "source": "implementation/learner-api.ts",
+        "bytes": 2539,
+        "sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8",
+        "lf_sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8"
+      },
+      {
+        "file": "main.ts",
+        "source": "implementation/main.ts",
+        "bytes": 30,
+        "sha256": "a019781dcf58996b8daafbd27b7f379e974b4beb64dfd1d80c709d61b4c59840",
+        "lf_sha256": "a019781dcf58996b8daafbd27b7f379e974b4beb64dfd1d80c709d61b4c59840"
+      },
+      {
+        "file": "bootstrap.ts",
+        "source": "implementation/bootstrap.ts",
+        "bytes": 103,
+        "sha256": "1fabf282ae7a1a6725c81aabcdb8274820e12948ff02653c917f3903f974fabc",
+        "lf_sha256": "1fabf282ae7a1a6725c81aabcdb8274820e12948ff02653c917f3903f974fabc"
+      }
+    ],
+    "customts_sha256": "606d79017f795488770b3d687d473a1f5978372a9aa48fdc5d21713aa2fd5389",
+    "learner_main_comment_only": true,
+    "learner_reference_callbacks": 0
+  },
+  "frozen_instructional_material": {
+    "recipe_files": 29,
+    "asset_files": 62,
+    "byte_exact": true,
+    "new_visual_media_qualification": "not_run"
+  },
+  "demo": {
+    "source_project": "review-delivery/project-edit-isolation",
+    "source_compile": "review-delivery/project-edit-isolation/COMPILE.json",
+    "compile_receipt_sha256": "701732387f4fe980534bb714d49a04a04be147d58d678d85ba13c01aec11f2a2",
+    "binary_sha256": "3d1957ea6b18ceaaeb21f92b266b4065198b4aaa21c083149560362e07376593",
+    "target": {
+      "branch": "stable4.1",
+      "tag": "v4.1.25",
+      "commits": "https://github.com/microsoft/pxt-arcade/commits/d4885bd35de1a9300183bf5a3fd1eec816992625",
+      "target": "4.1.25",
+      "pxt": "13.1.23"
+    },
+    "source_files": [
+      {
+        "file": "contracts.ts",
+        "bytes": 4720,
+        "sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+      },
+      {
+        "file": "config.ts",
+        "bytes": 429,
+        "sha256": "09f15a5eeca1d59942420be6af2c49de66467750bc771a8481a71944d6521965"
+      },
+      {
+        "file": "supplied-world/rooms.ts",
+        "bytes": 117907,
+        "sha256": "64a9f05a4bc284e93c1159f546ff5bc05f7f8bcca0d2f07420dc19959c990d81"
+      },
+      {
+        "file": "supplied-world/combat.ts",
+        "bytes": 22051,
+        "sha256": "9d5554f617002aefc515e7dd9ed9fb6a974d2aaff920f9bce9fab9d4a34ff2d3"
+      },
+      {
+        "file": "supplied-world/goals.ts",
+        "bytes": 73377,
+        "sha256": "0a91768e7b3e51e1e9f72e2ce3d39c76cd8af7e52205c9b752853c6f5d998b4b"
+      },
+      {
+        "file": "supplied-world/art.ts",
+        "bytes": 385985,
+        "sha256": "be9695d0a41d0f5d572cfa71d30f322cfc08146c5b89d2bf251196e5e75c730f"
+      },
+      {
+        "file": "supplied-world/advice.ts",
+        "bytes": 24287,
+        "sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437"
+      },
+      {
+        "file": "supplied-world/save.ts",
+        "bytes": 2640,
+        "sha256": "2d1032a4781adb2bf78ee0b6527a44256905d2f29e8efdfbcbf8c9fe8d783984"
+      },
+      {
+        "file": "supplied-world/view.ts",
+        "bytes": 34425,
+        "sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9"
+      },
+      {
+        "file": "supplied-world/world.ts",
+        "bytes": 41118,
+        "sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac"
+      },
+      {
+        "file": "learner-api.ts",
+        "bytes": 2539,
+        "sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8"
+      },
+      {
+        "file": "main.ts",
+        "bytes": 10534,
+        "sha256": "b9e2b093c3791ab8078dba0f0b775f59515d19e0a40ddf4dc8fb411a3a18acca"
+      },
+      {
+        "file": "bootstrap.ts",
+        "bytes": 84,
+        "sha256": "85298f55cc5ddcf0bb200f6e6e257100474fae1a3428bad8a337b3eff5940922"
+      }
+    ],
+    "reference_callbacks": 29,
+    "start_room": 14,
+    "all_rooms_unlocked": true
+  },
+  "links": {
+    "first": "https://arcade.makecode.com/#tutorial:https://github.com/mrbrackebusch-code/apocalyptic-lists/FIRST",
+    "demo": "https://arcade.makecode.com/#pub:github:mrbrackebusch-code/apocalyptic-lists-demo",
+    "demo_repository": "https://github.com/mrbrackebusch-code/apocalyptic-lists-demo",
+    "demo_ref": "main"
+  },
+  "claim_boundary": "Owner explicitly requested current game publication. Existing native compile and review evidence is retained; no fresh all-room Recipe, media, learner or classroom qualification is claimed. Public startup verification is a separate delivery receipt.",
+  "files": [
+    {
+      "path": "bootstrap.ts",
+      "bytes": 84,
+      "sha256": "85298f55cc5ddcf0bb200f6e6e257100474fae1a3428bad8a337b3eff5940922"
+    },
+    {
+      "path": "config.ts",
+      "bytes": 429,
+      "sha256": "09f15a5eeca1d59942420be6af2c49de66467750bc771a8481a71944d6521965"
+    },
+    {
+      "path": "contracts.ts",
+      "bytes": 4720,
+      "sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+    },
+    {
+      "path": "learner-api.ts",
+      "bytes": 2539,
+      "sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8"
+    },
+    {
+      "path": "main.ts",
+      "bytes": 10534,
+      "sha256": "b9e2b093c3791ab8078dba0f0b775f59515d19e0a40ddf4dc8fb411a3a18acca"
+    },
+    {
+      "path": "pxt.json",
+      "bytes": 909,
+      "sha256": "c590a514ce743e9788253dde6113c4c77e5456af248d447d54ecb998c3d73492"
+    },
+    {
+      "path": "README.md",
+      "bytes": 903,
+      "sha256": "e80425f54e427c812878e2867ff167b7a1993f90f2f093544636cc882300800d"
+    },
+    {
+      "path": "supplied-world/advice.ts",
+      "bytes": 24287,
+      "sha256": "59b13a9ca9eb136bf39537d92a1a74f7e99aad85147ed9b2c1453ec29da56437"
+    },
+    {
+      "path": "supplied-world/art.ts",
+      "bytes": 385985,
+      "sha256": "be9695d0a41d0f5d572cfa71d30f322cfc08146c5b89d2bf251196e5e75c730f"
+    },
+    {
+      "path": "supplied-world/combat.ts",
+      "bytes": 22051,
+      "sha256": "9d5554f617002aefc515e7dd9ed9fb6a974d2aaff920f9bce9fab9d4a34ff2d3"
+    },
+    {
+      "path": "supplied-world/goals.ts",
+      "bytes": 73377,
+      "sha256": "0a91768e7b3e51e1e9f72e2ce3d39c76cd8af7e52205c9b752853c6f5d998b4b"
+    },
+    {
+      "path": "supplied-world/rooms.ts",
+      "bytes": 117907,
+      "sha256": "64a9f05a4bc284e93c1159f546ff5bc05f7f8bcca0d2f07420dc19959c990d81"
+    },
+    {
+      "path": "supplied-world/save.ts",
+      "bytes": 2640,
+      "sha256": "2d1032a4781adb2bf78ee0b6527a44256905d2f29e8efdfbcbf8c9fe8d783984"
+    },
+    {
+      "path": "supplied-world/view.ts",
+      "bytes": 34425,
+      "sha256": "c3c6d35811098f109eb83ec63ea32d981e3a200ca95a7789f37bdfb096f34fe9"
+    },
+    {
+      "path": "supplied-world/world.ts",
+      "bytes": 41118,
+      "sha256": "4800d0d58e77bf410996b862279f31073456e62a7c7db00e7a06ee27d94d8dac"
+    }
+  ]
+}
