@@ -1,7 +1,7 @@
 {
   "schema": "AL-COMPLETE-PUBLICATION-1",
   "kind": "demo",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
   "status": "complete-current-release",
   "primary_directive": "Conserve usage indefinitely; preserve complete requested quality and reuse sufficient source-bound evidence.",
@@ -139,9 +139,9 @@
   "instructional_material": {
     "recipes": 27,
     "media": {
-      "count": 54,
-      "captured": 54,
-      "verified": 54
+      "count": 85,
+      "captured": 85,
+      "verified": 85
     },
     "all_current_runtime": true,
     "native_blocks_reuse": {
@@ -332,7 +332,7 @@
       "opaque_blocks": 0,
       "passed": true
     },
-    "current_gameplay_manifest_sha256": "09e7347c459e801dd226c8a994807749936307db14351826d702ef7cdb0220a2",
+    "current_gameplay_manifest_sha256": "7e41ea7b926a92c9ca9a57eee30145a5fc8438bdb4bbe7b673c8f0ee7e2d1394",
     "historical_media_preserved": true
   },
   "demo": {
@@ -456,7 +456,7 @@
     {
       "path": "pxt.json",
       "bytes": 909,
-      "sha256": "c69c67993134e11b09d291376aa4d95f692bccfa95fe708696f856cc1e7ee8dc"
+      "sha256": "bd2db3fcc59b298f2ba278060050b282aadac473e08ead1fa66e93607ca63c0e"
     },
     {
       "path": "README.md",
