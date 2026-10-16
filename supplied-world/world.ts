@@ -355,6 +355,11 @@ namespace apocWorld {
         if (!validValues(l.allyValues) || !validValues(l.enemyValues)) return "Values must be integer 0..9 (<=10)"
         if (!validSprites(l.allyTargets, true) || !validSprites(l.enemyTargets, true)) return "Unknown target Sprite or >10 targets"
         if (!validSprites(draft.roster, false)) return "Roster must contain current Sprite references"
+        if (selectedRoom == 14 && activeStation == apocTypes.Station.Secondary) {
+            const before = trial.lists.allyValues, after = l.allyValues
+            if (after.length != before.length || after[0] < 4 || after[0] > 9) return "Reroll changes only the first value to 4..9"
+            for (let i = 1; i < before.length; i++) if (after[i] != before[i]) return "Reroll changes only the first value"
+        }
         return ""
     }
     function canVisitStation(station: apocTypes.Station): boolean {
@@ -404,6 +409,7 @@ namespace apocWorld {
             consumed = []
             lockObserver()
             recent = selectedRoom == 24 && station == apocTypes.Station.Primary ? "The list shifted. Use Rewrite next, then Run." :
+                selectedRoom == 14 ? (station == apocTypes.Station.Secondary ? "First value rerolled. Swap it into the fourth slot at Primary." : "Values exchanged. Check the forecast; reroll first and swap again if needed.") :
                 selectedRoom == 27 && station == apocTypes.Station.Primary ? "Hazards held. Use Clear Wards next, then Run." :
                 "Plan changed. Follow the glowing Run station to see the result."
         }
@@ -868,7 +874,12 @@ namespace apocWorld {
     // Guide the physical interaction, without doing or grading the learner's edit.
     export function uiSuggestedStation(): number {
         if (animationActive()) return -1
-        if (result) return resultingVictory ? 4 : 3
+        if (result && resultingVictory) return 4
+        if (selectedRoom == 14 && trial) {
+            if (forecast && forecast.status == "victory") return 2
+            return trial.lists.allyValues[0] >= selectedVariant + 3 ? 0 : 1
+        }
+        if (result) return 3
         if (records.length == 0) return 0
         if (roomSpec && roomSpec.twoStations && records.length == 1 && records[0].station == apocTypes.Station.Primary) return 1
         return 2

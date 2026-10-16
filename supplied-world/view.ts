@@ -291,7 +291,7 @@ namespace apocView {
             if (a.trait != "Plain") smallCentered(a.trait, x, hpY + 19, 11)
         }
     }
-    export function stationLabel(i: number): string { return i == 0 ? JOBS[apocWorld.uiRoom() - 1] : i == 1 ? (apocWorld.uiRoom() == 24 ? "Rewrite" : "Clear Wards") : i == 2 ? "Release time" : i == 3 ? "Reset" : i == 5 ? "Speed " + apocWorld.uiSpeedLabel() : "Exit" }
+    export function stationLabel(i: number): string { return i == 0 ? JOBS[apocWorld.uiRoom() - 1] : i == 1 ? (apocWorld.uiRoom() == 14 ? "Roll first power" : apocWorld.uiRoom() == 24 ? "Rewrite" : "Clear Wards") : i == 2 ? "Release time" : i == 3 ? "Reset" : i == 5 ? "Speed " + apocWorld.uiSpeedLabel() : "Exit" }
     export function stationIcon(i: number): string { return i == 0 ? OPS[apocWorld.uiRoom() - 1] : i == 1 ? "set" : i == 2 ? "run" : i == 3 ? "reset" : i == 5 ? "speed" : "exit" }
     function stations(now: number): void {
         const xs = [86, 490, 288, 82, 288, 490], ys = [650, 650, 66, 84, 664, 84], spec = apocWorld.uiSpec(), suggested = apocWorld.uiSuggestedStation()

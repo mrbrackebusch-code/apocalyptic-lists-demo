@@ -153,6 +153,46 @@ namespace apocGoals {
         }
         return matchingLists(after, e.histAfter[1], allTarget) && snapshotAncillary(records[1].after, after);
     }
+    function sameSprites(a: Sprite[], b: Sprite[]): boolean {
+        if (!a || !b || a.length !== b.length) return false;
+        for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+        return true;
+    }
+    function fixedR14(a: apocTypes.TrialSnapshot, b: apocTypes.TrialSnapshot): boolean {
+        if (!a || !b || !a.lists || !b.lists || !snapshotAncillary(a, b)) return false;
+        return sameStrings(a.lists.allyMoves, b.lists.allyMoves) &&
+            sameSprites(a.lists.allyTargets, b.lists.allyTargets) &&
+            sameStrings(a.lists.enemyMoves, b.lists.enemyMoves) &&
+            sameNumbers(a.lists.enemyValues, b.lists.enemyValues) &&
+            sameSprites(a.lists.enemyTargets, b.lists.enemyTargets);
+    }
+    function sameR14(a: apocTypes.TrialSnapshot, b: apocTypes.TrialSnapshot): boolean {
+        return fixedR14(a, b) && sameNumbers(a.lists.allyValues, b.lists.allyValues);
+    }
+    function historyR14(records: apocTypes.StationRecord[], before: apocTypes.TrialSnapshot,
+                        after: apocTypes.TrialSnapshot): boolean {
+        if (!records || records.length < 2) return false;
+        let current = before;
+        let swapped = false, rerolled = false;
+        for (let i = 0; i < records.length; i++) {
+            const r = records[i];
+            if (!r || r.error || !r.before || !r.after || (r.effects && r.effects.length) ||
+                !sameR14(current, r.before) || !fixedR14(r.before, r.after)) return false;
+            const a = r.before.lists.allyValues, b = r.after.lists.allyValues;
+            if (!a || !b || a.length < 4 || a.length !== b.length) return false;
+            if (r.station === apocTypes.Station.Primary) {
+                if (b[0] !== a[3] || b[3] !== a[0]) return false;
+                for (let j = 1; j < a.length; j++) if (j !== 3 && b[j] !== a[j]) return false;
+                swapped = true;
+            } else if (r.station === apocTypes.Station.Secondary) {
+                if (b[0] < 4 || b[0] > 9 || b[0] !== Math.floor(b[0])) return false;
+                for (let j = 1; j < a.length; j++) if (b[j] !== a[j]) return false;
+                rerolled = true;
+            } else return false;
+            current = r.after;
+        }
+        return swapped && rerolled && sameR14(current, after);
+    }
     export function assess(spec: apocTypes.RoomSpec, before: apocTypes.TrialSnapshot,
                            after: apocTypes.TrialSnapshot, records: apocTypes.StationRecord[]): apocTypes.GoalResult {
         const out = new apocTypes.GoalResult(); out.met = false; out.messages = [];
@@ -166,6 +206,12 @@ namespace apocGoals {
             !matchingRoster(before, spec.rosterIDs) || !sameStrings(before.sourceMoves, spec.sourceMoves) ||
             before.goal !== spec.battle.goal || !sameStrings(before.requiredIDs, spec.battle.requiredIDs)) {
             out.messages.push("Initial snapshot does not match authored room"); return out;
+        }
+        if (spec.room === apocTypes.Room.R14) {
+            if (!historyR14(records, before, after) || !matchingActors(spec, before, after, [], [])) {
+                out.messages.push("Use the first-value reroll and preserve every real first/fourth swap"); return out;
+            }
+            out.met = true; out.messages.push("Reroll and swap history preserved; combat decides the outcome"); return out;
         }
         if (!matchingLists(after, e.lists, target) || !matchingRoster(after, e.rosterIDs) ||
             !sameStrings(after.sourceMoves, e.sourceMoves) ||

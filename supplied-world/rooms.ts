@@ -950,9 +950,9 @@ namespace apocRooms {
                 return s;
             }
             case 40: { // R14-V1
-                s.instruction = "Use a temporary number to exchange allyValues[0] and allyValues[3], preserving both original values.";
+                s.instruction = "Reroll the first allied value at Secondary, then use a temporary number at Primary to swap the first and fourth values. The fourth value needs at least 4 to finish the boss.";
                 b.allyMoves = ["Strike", "Ward", "Mend", "Strike"];
-                b.allyValues = [4, 1, 2, 1];
+                b.allyValues = [1, 1, 2, 1];
                 b.enemyMoves = ["Strike", "Wait", "Wait", "Wait"];
                 b.enemyValues = [1, 1, 1, 1];
                 b.allyTargetIDs = ["A-Blade", "A-Medic", "A-Blade", "A-Blade"];
@@ -967,14 +967,14 @@ namespace apocRooms {
                 s.sourceMoves = [];
                 s.editableLists = ["allyValues"];
                 s.allowHold = false; s.allowBanish = false;
-                s.twoStations = false;
-                s.primaryIndex = 0; s.secondaryIndex = -1; s.numberHint = 0;
+                s.twoStations = true;
+                s.primaryIndex = 0; s.secondaryIndex = 0; s.numberHint = 0;
                 return s;
             }
             case 41: { // R14-V2
-                s.instruction = "Use a temporary number to exchange allyValues[0] and allyValues[3], preserving both original values.";
+                s.instruction = "Reroll the first allied value at Secondary, then use a temporary number at Primary to swap the first and fourth values. The fourth value needs at least 5 to finish the boss.";
                 b.allyMoves = ["Strike", "Ward", "Mend", "Strike"];
-                b.allyValues = [5, 1, 2, 1];
+                b.allyValues = [1, 1, 2, 1];
                 b.enemyMoves = ["Strike", "Wait", "Wait", "Wait"];
                 b.enemyValues = [1, 1, 1, 1];
                 b.allyTargetIDs = ["A-Blade", "A-Medic", "A-Blade", "A-Blade"];
@@ -989,14 +989,14 @@ namespace apocRooms {
                 s.sourceMoves = [];
                 s.editableLists = ["allyValues"];
                 s.allowHold = false; s.allowBanish = false;
-                s.twoStations = false;
-                s.primaryIndex = 0; s.secondaryIndex = -1; s.numberHint = 0;
+                s.twoStations = true;
+                s.primaryIndex = 0; s.secondaryIndex = 0; s.numberHint = 0;
                 return s;
             }
             case 42: { // R14-V3
-                s.instruction = "Use a temporary number to exchange allyValues[0] and allyValues[3], preserving both original values.";
+                s.instruction = "Reroll the first allied value at Secondary, then use a temporary number at Primary to swap the first and fourth values. The fourth value needs at least 6 to finish the boss.";
                 b.allyMoves = ["Strike", "Ward", "Mend", "Strike"];
-                b.allyValues = [6, 1, 2, 1];
+                b.allyValues = [1, 1, 2, 1];
                 b.enemyMoves = ["Strike", "Wait", "Wait", "Wait"];
                 b.enemyValues = [1, 1, 1, 1];
                 b.allyTargetIDs = ["A-Blade", "A-Medic", "A-Blade", "A-Blade"];
@@ -1011,8 +1011,8 @@ namespace apocRooms {
                 s.sourceMoves = [];
                 s.editableLists = ["allyValues"];
                 s.allowHold = false; s.allowBanish = false;
-                s.twoStations = false;
-                s.primaryIndex = 0; s.secondaryIndex = -1; s.numberHint = 0;
+                s.twoStations = true;
+                s.primaryIndex = 0; s.secondaryIndex = 0; s.numberHint = 0;
                 return s;
             }
             case 43: { // R15-V1

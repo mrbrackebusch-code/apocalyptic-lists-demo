@@ -114,6 +114,12 @@ apocalypse.onInteract(apocTypes.Room.R14, apocTypes.Station.Primary, function ()
     apocalypse.setValues(apocTypes.Side.Ally, allyValues)
 })
 
+apocalypse.onInteract(apocTypes.Room.R14, apocTypes.Station.Secondary, function () {
+    let rerollValues: number[] = apocalypse.values(apocTypes.Side.Ally)
+    rerollValues[0] = randint(4, 9)
+    apocalypse.setValues(apocTypes.Side.Ally, rerollValues)
+})
+
 apocalypse.onInteract(apocTypes.Room.R15, apocTypes.Station.Primary, function () {
     let enemyMoves: string[] = apocalypse.moves(apocTypes.Side.Enemy)
     for (let i = 0; i <= enemyMoves.length - 1; i++) {
