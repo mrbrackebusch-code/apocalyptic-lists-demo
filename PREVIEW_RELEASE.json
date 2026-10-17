@@ -1,7 +1,7 @@
 {
   "schema": "AL-COMPLETE-PUBLICATION-1",
   "kind": "demo",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
   "status": "complete-current-release",
   "primary_directive": "Conserve usage indefinitely; preserve complete requested quality and reuse sufficient source-bound evidence.",
@@ -1436,7 +1436,7 @@
     {
       "path": "pxt.json",
       "bytes": 909,
-      "sha256": "a6d3f97d83493ff900750f3f9e336bf80517cd4b9d0b9658d2e997efcf823846"
+      "sha256": "4d7be6e43b282f880a23f882b5799792897b8aac00729076e3dc5b40d1aa3fa5"
     },
     {
       "path": "README.md",
