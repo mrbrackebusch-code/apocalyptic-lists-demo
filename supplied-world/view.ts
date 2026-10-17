@@ -3,9 +3,8 @@
 namespace apocView {
     const WIDTH = 576
     const CENTER = 288
-    const JOBS = ["Write plan", "Hold threat", "Rewrite", "Append", "Insert Ward", "Delay", "Remove Ward", "Repair last", "Remove first", "Remove last", "Banish first", "Find Ward", "Hold hazards", "Swap power", "Clear Wards", "Build counters", "Use reserve", "Steal power", "Hold one", "Reverse", "Find defense", "Move target", "Find + remove", "Delay", "Repair gaps", "Build recovery", "Hold hazards"]
     const OPS = ["create", "get", "set", "append", "insert", "prepend", "remove", "length", "remove", "remove", "remove", "find", "foreach", "swap", "foreach", "build", "transfer", "transfer", "get", "reverse", "find", "transfer", "find", "order", "foreach", "build", "foreach"]
-    const MENU = ["Use first altar", "Use second altar", "Release time", "Reset this attempt", "Retry this setup", "Try another setup", "Continue through the gate", "Revisit an unlocked room", "Altar help + room strategy", "Reset saved progress", "Animation speed"]
+    const MENU = ["Use Left altar", "Use Right altar", "Release time", "Reset this attempt", "Retry this setup", "Try another setup", "Continue through the gate", "Revisit an unlocked room", "Altar help + room strategy", "Reset saved progress", "Animation speed"]
     const MOVES = ["Strike", "Flurry", "Mend", "Ward", "Venom", "Reap", "Empower", "Wait"]
     let moveIcons: Image[] = []
     let actorRefs: Sprite[] = []
@@ -36,10 +35,10 @@ namespace apocView {
         power: number = 0
         target: Sprite = null
     }
-    function text(s: string, x: number, y: number, color: number = 1): void { screen.print(s, x, y, color, image.font8) }
-    function tiny(s: string, x: number, y: number, color: number = 1): void { screen.print(s, x, y, color, image.font5) }
-    function centered(s: string, x: number, y: number, color: number = 1): void { text(s, x - Math.idiv(s.length * 6, 2), y, color) }
-    function smallCentered(s: string, x: number, y: number, color: number = 1): void { tiny(s, x - Math.idiv(s.length * 6, 2), y, color) }
+    function text(s: string, x: number, y: number, color: number = 1): void { screen.print(apocWords.text(s), x, y, color, image.font8) }
+    function tiny(s: string, x: number, y: number, color: number = 1): void { screen.print(apocWords.text(s), x, y, color, image.font5) }
+    function centered(s: string, x: number, y: number, color: number = 1): void { s = apocWords.text(s); text(s, x - Math.idiv(s.length * 6, 2), y, color) }
+    function smallCentered(s: string, x: number, y: number, color: number = 1): void { s = apocWords.text(s); tiny(s, x - Math.idiv(s.length * 6, 2), y, color) }
     function shortName(s: string): string { return s.substr(0, 2) == "A-" || s.substr(0, 2) == "E-" ? s.substr(2) : s }
     function resize(source: Image, w: number, h: number): Image {
         const out = image.create(w, h)
@@ -250,7 +249,7 @@ namespace apocView {
     }
     function focusSide(now: number): number { return apocWorld.uiPlaying() ? apocWorld.uiActiveSide() : (now - apocWorld.uiHoverStarted()) % 3500 < 1150 ? 0 : 1 }
     function party(state: apocTypes.TrialSnapshot, now: number): void {
-        smallCentered("ALLIES", 62, 119, 9); smallCentered("ENEMIES", WIDTH - 62, 119, 3)
+        smallCentered("OUR TEAM", 62, 119, 9); smallCentered("ENEMIES", WIDTH - 62, 119, 3)
         const combat = apocWorld.uiPlaying() || apocWorld.uiPreview()
         const row = combat ? apocWorld.uiActiveRow() : apocWorld.uiNearRow(), side = combat ? apocWorld.uiActiveSide() : focusSide(now)
         const events = row >= 0 ? apocWorld.uiActionEvents(side, row) : [], phase = apocWorld.uiPhase()
@@ -291,7 +290,7 @@ namespace apocView {
             if (a.trait != "Plain") smallCentered(a.trait, x, hpY + 19, 11)
         }
     }
-    export function stationLabel(i: number): string { return i == 0 ? JOBS[apocWorld.uiRoom() - 1] : i == 1 ? (apocWorld.uiRoom() == 14 ? "Roll first power" : apocWorld.uiRoom() == 24 ? "Rewrite" : "Clear Wards") : i == 2 ? "Release time" : i == 3 ? "Reset" : i == 5 ? "Speed " + apocWorld.uiSpeedLabel() : "Exit" }
+    export function stationLabel(i: number): string { return i == 0 ? "Left altar" : i == 1 ? "Right altar" : i == 2 ? "Release time" : i == 3 ? "Reset" : i == 5 ? "Speed " + apocWorld.uiSpeedLabel() : "Exit" }
     export function stationIcon(i: number): string { return i == 0 ? OPS[apocWorld.uiRoom() - 1] : i == 1 ? "set" : i == 2 ? "run" : i == 3 ? "reset" : i == 5 ? "speed" : "exit" }
     function stations(now: number): void {
         const xs = [86, 490, 288, 82, 288, 490], ys = [650, 650, 66, 84, 664, 84], spec = apocWorld.uiSpec(), suggested = apocWorld.uiSuggestedStation()
@@ -309,7 +308,7 @@ namespace apocView {
     }
     function sources(state: apocTypes.TrialSnapshot, now: number): void {
         if (state.roster.length) {
-            smallCentered("ROSTER", 143, 139, 9)
+            smallCentered("ENEMY LIST", 143, 139, 9)
             for (let i = 0; i < state.roster.length; i++) {
                 if (activatingCell(0, 3, i, now)) continue
                 const x = 143, y = 180 + i * 40, k = actorIndex(state.roster[i]), a = actorFor(state.roster[i], state)
@@ -317,7 +316,7 @@ namespace apocView {
                 screen.drawCircle(x, y, 16, a && a.held ? 10 : 11); if (a && !a.present) cross(x, y, 10)
             }
         } else if (state.sourceMoves.length) {
-            smallCentered(apocWorld.uiRoom() == 17 ? "RESERVE" : "SOURCE", 143, 139, 9)
+            smallCentered("RESERVE", 143, 139, 9)
             for (let i = 0; i < state.sourceMoves.length; i++) if (!activatingCell(0, 4, i, now)) moveBubble(state.sourceMoves[i], 143, 180 + i * 40, 0, false, false)
         }
     }
@@ -478,7 +477,7 @@ namespace apocView {
         }
     }
     function wrap(s: string, x: number, y: number, width: number, color: number = 1): number {
-        let rest = s
+        let rest = apocWords.text(s)
         while (rest.length > 0) {
             let cut = Math.min(rest.length, Math.idiv(width, 6))
             if (cut < rest.length) { let i = cut; while (i > cut - 18 && rest.charAt(i) != " ") i--; if (i > cut - 18) cut = i }
@@ -492,7 +491,7 @@ namespace apocView {
         if (apocWorld.uiPicking()) { centered("Revisit an unlocked room", CENTER, 174, 9); centered("Room " + apocWorld.uiPickRoom(), CENTER, 230, 5); centered("Left/Right choose. A travel. B back.", CENTER, 278, 1); return }
         if (apocWorld.uiHelp()) {
             const page = apocWorld.uiHelpPage(), pages = apocWorld.uiHelpPages(), strategy = page == pages - 1
-            centered("ROOM " + apocWorld.uiRoom() + (strategy ? " STRATEGY" : page == 0 ? " FIRST ALTAR" : " SECOND ALTAR"), CENTER, 134, 9)
+            centered("ROOM " + apocWorld.uiRoom() + (strategy ? " STRATEGY" : page == 0 ? " LEFT ALTAR" : " RIGHT ALTAR"), CENTER, 134, 9)
             if (strategy) {
                 let y = wrap(apocWorld.uiSpec().instruction, 83, 174, 408)
                 text("IF YOU NEED IT, HERE IS A STRATEGY", 83, y + 20, 5)
@@ -549,6 +548,7 @@ namespace apocView {
             }
         }
         if (apocWorld.uiHelp()) controls = "Left/Right turn the help pages | B returns | Reading does not use the altar"
+        s = apocWords.text(s)
         if (s.length > 89) s = s.substr(0, 86) + "..."
         tiny(s, 23, 695, apocWorld.uiPlaying() ? 5 : 1)
         tiny(controls, 23, 706, 11)

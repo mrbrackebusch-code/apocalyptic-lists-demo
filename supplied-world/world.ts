@@ -408,10 +408,10 @@ namespace apocWorld {
             editForecastPending = true
             consumed = []
             lockObserver()
-            recent = selectedRoom == 24 && station == apocTypes.Station.Primary ? "The list shifted. Use Rewrite next, then Run." :
-                selectedRoom == 14 ? (station == apocTypes.Station.Secondary ? "First value rerolled. Swap it into the fourth slot at Primary." : "Values exchanged. Check the forecast; reroll first and swap again if needed.") :
-                selectedRoom == 27 && station == apocTypes.Station.Primary ? "Hazards held. Use Clear Wards next, then Run." :
-                "Plan changed. Follow the glowing Run station to see the result."
+            recent = selectedRoom == 24 && station == apocTypes.Station.Primary ? "The list shifted. Use Right altar next, then Release time." :
+                selectedRoom == 14 ? (station == apocTypes.Station.Secondary ? "First power rerolled. Swap it into the fourth slot at Left altar." : "Powers exchanged. Check the forecast; roll first and swap again if needed.") :
+                selectedRoom == 27 && station == apocTypes.Station.Primary ? "Enemies frozen. Use Right altar next, then Release time." :
+                "Plan changed. Follow the glowing Release time crystal to see the result."
         }
         draft = null
         effectDraft = []
@@ -496,7 +496,7 @@ namespace apocWorld {
         display = apocCombat.cloneTrial(trial)
         refreshForecast()
         lastAction = ""
-        recent = "Open Recipe R" + roomLabel() + ". Use the glowing station, then Run. B opens the menu."
+        recent = "Open room " + selectedRoom + " instructions. Use the glowing altar, then Release time."
         menu = false
         roomPicker = false
         playing = false
@@ -779,7 +779,7 @@ namespace apocWorld {
     export function uiGoal(): apocTypes.GoalResult { return goal }
     export function uiProgress(): apocTypes.Progress { return progress }
     export function uiEvent(): apocTypes.TraceEvent { return recentEvent }
-    export function uiNotice(): string { return recent }
+    export function uiNotice(): string { return apocWords.text(recent) }
     export function uiPlaying(): boolean { return playing }
     export function uiMenu(): boolean { return menu }
     export function uiEraseConfirm(): boolean { return eraseConfirm }

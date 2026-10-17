@@ -1,7 +1,7 @@
 {
   "schema": "AL-COMPLETE-PUBLICATION-1",
   "kind": "demo",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "repository": "mrbrackebusch-code/apocalyptic-lists-demo",
   "status": "complete-current-release",
   "primary_directive": "Conserve usage indefinitely; preserve complete requested quality and reuse sufficient source-bound evidence.",
@@ -38,10 +38,10 @@
     "source_files": [
       {
         "file": "contracts.ts",
-        "source": "handoffs/implementation-2026-10-12/prepared/contracts.ts",
-        "bytes": 4720,
-        "sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f",
-        "lf_sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+        "source": "implementation/contracts.ts",
+        "bytes": 5679,
+        "sha256": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5",
+        "lf_sha256": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
       },
       {
         "file": "config.ts",
@@ -81,9 +81,9 @@
       {
         "file": "supplied-world/advice.ts",
         "source": "implementation/supplied-world/advice.ts",
-        "bytes": 39633,
-        "sha256": "d9f9b5827c8a9030ee85858a90b95bdb5742c19a9bd0b4db50f2de546c2afeb5",
-        "lf_sha256": "d9f9b5827c8a9030ee85858a90b95bdb5742c19a9bd0b4db50f2de546c2afeb5"
+        "bytes": 40437,
+        "sha256": "091ee9c8b37886fe1ee9663dfa219b4580c524bebf229737927ad7dcd03f805e",
+        "lf_sha256": "091ee9c8b37886fe1ee9663dfa219b4580c524bebf229737927ad7dcd03f805e"
       },
       {
         "file": "supplied-world/save.ts",
@@ -95,23 +95,23 @@
       {
         "file": "supplied-world/view.ts",
         "source": "implementation/supplied-world/view.ts",
-        "bytes": 45230,
-        "sha256": "6b1af14e53f75dc93ec300280b19e98e3d3691bbfcb1f2f944ff686b54718d6d",
-        "lf_sha256": "6b1af14e53f75dc93ec300280b19e98e3d3691bbfcb1f2f944ff686b54718d6d"
+        "bytes": 44809,
+        "sha256": "e1fbf6fa2388264e47a1c5f312637421a682a668871c6e72a44751b1f70753ab",
+        "lf_sha256": "e1fbf6fa2388264e47a1c5f312637421a682a668871c6e72a44751b1f70753ab"
       },
       {
         "file": "supplied-world/world.ts",
         "source": "implementation/supplied-world/world.ts",
-        "bytes": 45049,
-        "sha256": "c0afc83e1bbce347ab9e5e88c6e0d070d6ee0adb85786d11453190d7fa64f05a",
-        "lf_sha256": "c0afc83e1bbce347ab9e5e88c6e0d070d6ee0adb85786d11453190d7fa64f05a"
+        "bytes": 45099,
+        "sha256": "d83a4a7a78bd91f1c6b16b15a39848bf9918e6b7b26c284286d4e8abca2873bd",
+        "lf_sha256": "d83a4a7a78bd91f1c6b16b15a39848bf9918e6b7b26c284286d4e8abca2873bd"
       },
       {
         "file": "learner-api.ts",
         "source": "implementation/learner-api.ts",
-        "bytes": 2539,
-        "sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8",
-        "lf_sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8"
+        "bytes": 5956,
+        "sha256": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+        "lf_sha256": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311"
       },
       {
         "file": "main.ts",
@@ -128,7 +128,7 @@
         "lf_sha256": "1fabf282ae7a1a6725c81aabcdb8274820e12948ff02653c917f3903f974fabc"
       }
     ],
-    "customts_sha256": "8aa3bd2b5dc30a833fb7a1e763b2e3b2ff04b0a269843d342a2fb81f5c7fd147",
+    "customts_sha256": "09fa4d80d788f5e1983456f0e509479ce5bf37e7ff66fd8da01ce7ffdf58de20",
     "dimensions": [
       576,
       720
@@ -146,7 +146,7 @@
     "all_current_runtime": true,
     "native_blocks_reuse": {
       "schema": "AL-NATIVE-INSTRUCTION-REUSE-1",
-      "context": "Unchanged native API; retained source-bound isolated references except owner-revised R14. Current R14 and combined cumulative native delta proof required separately; historical receipts remain unchanged.",
+      "context": "All27 learner references and native labels changed. Fresh actual Arcade proof is mandatory; historical receipts establish lineage only.",
       "target": {
         "branch": "stable4.1",
         "tag": "v4.1.25",
@@ -160,584 +160,1166 @@
         "sha256": "151e225a0f1be8e1a78f1899f58540d1004051e48b94b409e317aa0c2fac6826"
       },
       "native_api_lf_sha256": {
-        "learner-api.ts": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8",
-        "contracts.ts": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+        "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+        "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
       },
       "references": {
         "R01": {
-          "isolated": "ef1d33f42e0ac2d87f226f96087cfcd43c420bd9d83a54878e7d277a1b55a49a",
-          "cumulative": "5c5358008dd34a2fd3cb5dbc56d7561c825a7bff732aad9aed38787848811501",
-          "xml_sha256": "e847b4bed251b54d83b3b2b1d29db44ada0ef74526737e1436deb146f1fc5661",
-          "roundtrip_sha256": "2e356799dda08c1a5c3983a50424c5ab18667fac38ed61d4cb741adabc050499"
+          "isolated": "2ef333b71728814e940ed4f7312fec69edeeddb41ae9327f9282d1aa51086756",
+          "cumulative": "ce9a411af774f2778b4c3b32e99cf531c59b43fce9b51534ca1c0dbead513670",
+          "xml_sha256": "774864da96122fabd7c81a120fb34eeada04c4992b50e5a7cc81dc26aae24443",
+          "roundtrip_sha256": "75282f93d80e7fbcdecd9ed3236b2a14621f91ea285cf281019840c67d254f56"
         },
         "R02": {
-          "isolated": "e4d8536a31fe466a285f2ac2e7b3c4cd487018a961ba9d2cf2e3848396e6f571",
-          "cumulative": "8892e3bed3758aaeb6d72f964503ec5a378923a65feeb027370876bb6ad68412",
-          "xml_sha256": "27490e6e464994f42969c0b2543ea2ddb6083f204517a083baaf4eef80fd6e7a",
-          "roundtrip_sha256": "c8357806d41928ef6d90645f3c0c47e7f8a4aa604b8d39124418ce9418b1d1b2"
+          "isolated": "74fc2fd5d475155cd1aed8776560e49ff46ccb0640de486614ed07a67c5bfb7d",
+          "cumulative": "00441dbc24b7da0577c8969e78615f09b3d919ee2e81c70ae8249819d0a32689",
+          "xml_sha256": "a77dfb610988b98ebd49c673438d39a3e0b92b3ed54e55c9905dc4708ac6d67c",
+          "roundtrip_sha256": "ac7168eaf731809cdb5ef144e9a5be712bac694f37cfd3c488f491035aa52d93"
         },
         "R03": {
-          "isolated": "6d8ec58a4f09b724e3ceb438fe1b8aaaa751a2870b92b67a6ab3adb9b410f1b5",
-          "cumulative": "fe497df4ac0dbf4546ae1818a8199c77c17ec4e6e2ed171d21f5b602fafbe4bb",
-          "xml_sha256": "aea170a3303140a3a7e333a02cbbe638c2aaa5db03022aacc682aa5923d21734",
-          "roundtrip_sha256": "31f6dc06c520a67094d69cedef878c1e02f4427514c428850da52c3f6d87aa89"
+          "isolated": "98f6692da044e4e9ba0bf2f2af9b5342988ef65df5f537d6e23562414a125994",
+          "cumulative": "af5e28c174158880d90f98230e333cde09d72acde2182d288804c3d3d8f1f2b8",
+          "xml_sha256": "4c74013dea8043ba12f15bd96671f14860f3d5a1586542c0668157a9b35e3004",
+          "roundtrip_sha256": "e8c290d405de8758cc2bb87b0d6e14a9619a7971d3df400fe7220d0357642369"
         },
         "R04": {
-          "isolated": "64bf61b9c435bfd7303d8643225f34ffb88cb3f96f1d52ce2a211a73b2442124",
-          "cumulative": "bd8a4db4dec639f0f038ef690326cdaa2f1c22e01f14e3c1f20d0a0f3fcab7dc",
-          "xml_sha256": "b17efd904f93386f9f01537c3d0871fa05ec31a96f2081eb49fbce35274a6f56",
-          "roundtrip_sha256": "c12ae3f8f0b9bd398bcbc187da899997808436df2ea26844ecd0efc00e2f2f58"
+          "isolated": "888ecbfc23eb19a09604c1c3537cba487f39b1068c7f18e4fceef539ae644009",
+          "cumulative": "3d4589c51eecdbb447fbc9952fd8047f88b6d4e27014f3884023135d27b32d4e",
+          "xml_sha256": "f28ffb9c5a14ca4b8863e3837f04575f287819dbef5b4c461977f258e691543b",
+          "roundtrip_sha256": "dd0e2b218dac390f54dcd662ed8681aa003eccbb4404c50a64c6487af37665bd"
         },
         "R05": {
-          "isolated": "b5682f384319c0589ce4b34cd9d17b5d1b02f44374ff1ed69a4559be2783f7d4",
-          "cumulative": "3902d241efa153185222ebb0282878e3e4affe42e12276a8fc4b9813122cee9f",
-          "xml_sha256": "2bc47f0826fe8d34f7f3b2f745374e3ee76c866dbc8694e4411b95263a22ac33",
-          "roundtrip_sha256": "5ce0777f2e570389eebab8887a0eaaf26fef2e5ff0e7cb0e4ee55d260958169d"
+          "isolated": "e2b3d653c56f77c5e4fd0e97e7bea473954806248d81cd235dbb2d4937205e48",
+          "cumulative": "48c276fbe91262e7aadf6bffc2cd1cf313131f543f028492600747aa03fcc2b3",
+          "xml_sha256": "53d26a99c40a557f33dc2e6a9b93d52384d91f2552d6ea24a769f9a8d3487fd0",
+          "roundtrip_sha256": "97c023e23133fc0ab36a7e287c13ee108afe8ce85111b039c4639f156c6dc495"
         },
         "R06": {
           "isolated": "39b68707a1441bfbe895aecbdc641e1bf7fb5f69b69e51519886664b783d4981",
-          "cumulative": "0bf9d57aaaee7747db1114696406ba6702c1c9effc56eddd9473b0b68a732649",
-          "xml_sha256": "c3b868912416f52f29de4fff3fd0fc38d4d9e169be6656b5818a447aec570683",
+          "cumulative": "8d39d51ad3aae2de27884e7bbcf9a25045a5cb89678ac677a9e741268e8e1abf",
+          "xml_sha256": "af1edf0df352e138a4e59d6e0d92ea3b1022dfad4a41359bfd4b92c57b36d691",
           "roundtrip_sha256": "f971cb3df31c42952651df78f71ee38a3b9cace734d7d36f72bec2b350036e7b"
         },
         "R07": {
-          "isolated": "d23fa45d0fe17fcbc82670b95fe523d56f6b6d0fcc6cce4aa67b4ffa4f00c99d",
-          "cumulative": "e772f167b60c0f802593d8736333e9653acf02b4b5aac059c5c7d059dde5235c",
-          "xml_sha256": "66b50094eb1b5036eaf39aedd91d54e2caffd3fec8b5503d266068330a0e3d71",
-          "roundtrip_sha256": "91e327abab966b30bf7e8a42a95ac392cfb7ff2679a7e2a27e6736037abe7388"
+          "isolated": "a595acf508d52f10d210a903df02635c8ebcb4ff8b6663dad445ab2c06fa1aca",
+          "cumulative": "73b830bd46016fa4a8f185283bf73bab5acfec518d7a7272a7f5f37c50d0e7e4",
+          "xml_sha256": "7bc4ad6afcfb73995136a7aef89674761f64af6de023b3b87784c0f062b914c3",
+          "roundtrip_sha256": "a5f65eb68f4bf91003aa287ab0ffd22638a3d46a3b0bcbad7ff7b0dff254f7bc"
         },
         "R08": {
-          "isolated": "5e61c04da90aec74f7f99621ec3cb44896ec3f7fe9c720a605646d57d52964df",
-          "cumulative": "587cdb304a5255e1305a3044d7988a7ae42259813da8bc71c981856f22273240",
-          "xml_sha256": "e828718ee41011cf4a2501c24cbfa046b240a2665a40153c22f207f35d399b92",
-          "roundtrip_sha256": "fdd943a48fd53630c5cfac3c8305740505673b0fc91f58817a489fee1d81423f"
+          "isolated": "82438b32e294773b5f8f64d4f36920e6888b39b8e522c747724c01d41b90d5db",
+          "cumulative": "96524d6416720c4c16ce4c8742119cd99a541fe635d81af3d7a8261c1a6d0d9b",
+          "xml_sha256": "4884da77e59998a0cd4a1efd804ad1d33241a3033df720b59fe9b94a0db3e7e9",
+          "roundtrip_sha256": "36c4b19aa14c5a342b0051e9524351e3f914e0fddad7f0a22edc319faa5920b1"
         },
         "R09": {
-          "isolated": "009191c80b60b1280b3a500e00a0fc8164cd0a9bfa530fcdd66c960e83bf386d",
-          "cumulative": "ab07de8df506d77fd5e81b5b164c54ac87698ce9ba6dee63d96102ee7b7179bf",
-          "xml_sha256": "37268ebd717c421a354bf4f57eb2198780f339e8aeaac2831205d07e740864e1",
-          "roundtrip_sha256": "61930cd834a54917fa7b1b623d53348a129a26382115dc7bf97e9d444dad88c6"
+          "isolated": "4a6b348cff721b81face8007cf714f7d2dc183bce2cbd13b73d9442ea69b423f",
+          "cumulative": "02ccbf749bf87d764744cf5e74c011f273f729e2dcb4d15a77fae44dbb6220c7",
+          "xml_sha256": "0342f64e5ea9ba714016cff623121bc668b5a4ccfc98093debead9ad46a2646e",
+          "roundtrip_sha256": "ec69a53d0eeb2bdaf7fc173268bdea7d1e86d11c2515619f1caf705ce3cf619e"
         },
         "R10": {
           "isolated": "9f107780d0c092ab93d8be9e9a8ba9ec64c9ccd43a17a976a19f349cc4d9e592",
-          "cumulative": "dcbeb300b9415e54aaab56631cd0f10bf1115a7e958c390fdedc238b34af63ac",
-          "xml_sha256": "ef75b612f43a15e03fa7edf8dcb37dc299f61cd34f6881a08d7a40a97bc5d54c",
+          "cumulative": "ae18c4902d9532496f51c6a620ec22d8cc105f7618e5312362519918025a8a6d",
+          "xml_sha256": "e5061a7eb5389c1da06b0aadfaa95baa59cea07e1041205e04c65df53fbc23d5",
           "roundtrip_sha256": "3761a363d1a2da00243d4e3a2b49b9cae7a0a5c364e9ba1474b518a75a6e100b"
         },
         "R11": {
-          "isolated": "c5906aaedfec1b0cd6f176c5ae8a555a6a6977a33fea3dcd821c2c35dc9e54af",
-          "cumulative": "42cb177faea2b636962efafd5a44b746fb37e8f254facb583ddbd8d2953debe2",
-          "xml_sha256": "ce8c845c2df0e29dcfbed26559d2640208dbc8b5a689898df3f867b443da5c05",
-          "roundtrip_sha256": "c3c74ff0fd89de68c97cd6b36de8f5b8cb0cc2b02055b9ad81f0d3bc8486a705"
+          "isolated": "7998c1a036422b694df0ea9fc2c1283bae3a664485166ee43d784b914c0b0bfe",
+          "cumulative": "c9887f0ee19206822cd189c4897e16578efef4298fd2a460393efd51b87ec64d",
+          "xml_sha256": "22576444ce5652f2eb9d3ea2f3237ea43b92915cb4abc2d432dc255c0d23aeb8",
+          "roundtrip_sha256": "5a57d8f6b2ae0504b2c3be0bb91cd63cd42e5ed0b3d3959e1a3a8efe92ebad5b"
         },
         "R12": {
-          "isolated": "0e807499c753ae8e410f91c932c76c62c16ad59c2fbc3adf72c3f0e431337d01",
-          "cumulative": "6d6eb503fc3ba21f66bbaa7fed6e81e7beb14c01ff30be585ce6780dc5e4978a",
-          "xml_sha256": "8fefbb498c4b88c1784d8fc560ba7b8d1cb2ceb98190a0a44294795460eb78df",
-          "roundtrip_sha256": "b3a0fc8ebda6ed34c8f10456b0e4fd1e9e234d903777089b89d92250aca44685"
+          "isolated": "3213aacf6a147071bb5b48c88d89c49713611738f2a28589de35205695a25ba6",
+          "cumulative": "60e58c3dcbafa407daeaa293b26fc913dacda2ad41d02e77a664a5e7cde28007",
+          "xml_sha256": "0ae6b5c8c122a2ecb126e44744b6033cc1526f90312c3f134806b58b3babc47e",
+          "roundtrip_sha256": "838e4b6d5c80aa1ba7fe45527bd2a33db6c1aa65cbe724b11364e8babf5ac565"
         },
         "R13": {
-          "isolated": "b87e77db4a9989de6d01833231a1f43d4e45e8b07781d0540c4f6e6f8527ddef",
-          "cumulative": "8c8a39d494bba26d056a40825c9556a88e9fc6f748976d2133393b5cc9706296",
-          "xml_sha256": "65c7454da4ae2772fd1e5e57304d6b8a09a90825314fce851967fcd7d23ac767",
-          "roundtrip_sha256": "5552959f66e0a00b3d5a7c8e4c81ba5c46f559c4419feec02e67f191dfe781e8"
+          "isolated": "1d24a6b55c7e1277e8252bc1933905acd6bd764599609e86cd4edcf012061fa5",
+          "cumulative": "c0409eba2923e969a604fb979e57d292168b16fa4745ae05c675cd4e027fe736",
+          "xml_sha256": "834027279d9bcd4b5d8d060b4345a17cbb5076b99184718a6ac04913cbe28802",
+          "roundtrip_sha256": "d9696b6fb5fe9a602731d5001d883f7fbce37643bf18420f9d992cbcbd08f8ef"
         },
         "R14": {
-          "isolated": "7279775e877d4ae9472d39d853d6b4bc8ca4d679f8eb783984a243666019d58e",
-          "cumulative": "a668869ee7ad88e17d7b91b0b767b9d1b21bbd0e92f9cfb438caa94ef9eed0c7",
-          "xml_sha256": "93114ff79002ba56f24d031170beb3fae810a7b65addda43c223e032c6c1b4fc",
-          "roundtrip_sha256": "5057cc832fce925d0a056864b5776cbe01dfb0dd6d61d8c6b8609a264efe3c89"
+          "isolated": "2b21f615c6a4c0920a09bd19626f3d16421f8b4947de93f07eb927d816dcfd52",
+          "cumulative": "df037cbe15ea3145fb9ad9cdb8af21c1a66c5af175f0bfb57cd11bba1b8493e3",
+          "xml_sha256": "16cdf30d7ead772015ec9547f7a199fd9b03fe1976291ce0bc3fc220634ae95d",
+          "roundtrip_sha256": "79644f6a7fc28e4f68f2fd18486dc583ca95decbd1a90ed292e26ce473e26b55"
         },
         "R15": {
-          "isolated": "5663be64bb986f8a369bab39d21d5107cd2719ce84f60b4d67fce887e9d27157",
-          "cumulative": "28a05ef90d9c242fccdc649ded37f1c4c35aed4ea35f20b5e0d2f5ef0c5c1b31",
-          "xml_sha256": "32d4a69eb4ed20dd697734fe386e60927509bdf579f22e98e8c03f482b1fe596",
-          "roundtrip_sha256": "c5111d81e2f7456497d225a4426803083729dead7d1da7f8d17e4ceb654d1e28"
+          "isolated": "db75615a8246a50c71f94bbf6d8eeb58af18e0d5e1e52d69c36155374d70f228",
+          "cumulative": "5a50a6d9f1f03bb07cc3c21d2006bf06f24980ddf808fdabf5afff2c5041bf7c",
+          "xml_sha256": "d9443bb5b459b5804a6362235402e1cf122714293aba51e375ee237b130bd6c6",
+          "roundtrip_sha256": "8ee737569adebccc18794ecbcf17db6592f0a408a5c6f94760d335d44c234a61"
         },
         "R16": {
-          "isolated": "f995b329fac49aa70ceb4313627a57f35f45cc90fd20fce3bd1435b955d300b6",
-          "cumulative": "187ced6b18e89ddf2ddc55f7a2645050e8f65642107d3d1a8182983c89366542",
-          "xml_sha256": "3cb27d75bc159f09cf3caf69636b6a19e03afde622cdf574ffee7a0ab99756da",
-          "roundtrip_sha256": "8ca53ac8a53060e90f7b0b51d71b109655b64d6d134806fafdbf7e2a03047255"
+          "isolated": "398be7b8407fcaed6ed98fcfb9c9d96f51fdfd902106f074855f3d4c0833ab38",
+          "cumulative": "b1d6ad615a45532f7ea56c6bf845dd1c9e4d5ff237315f5f40216a4d460b0bf7",
+          "xml_sha256": "0686c57d85675bd97e73576e027fdf49e4fe27afa99e0011a447a2aa84c012f0",
+          "roundtrip_sha256": "19fa432a6194b5a1c0499b2720c56949c8d5eac162bc683392735ec1837f76bc"
         },
         "R17": {
-          "isolated": "f154ea8f533a05fee51c34c92475fa986f6c47816da1732bab7c2bb1b62d053e",
-          "cumulative": "0aa42552d7a3ecab9d4d0e1a2b3b024fab039ac90fb5c52775012bc71a53ce11",
-          "xml_sha256": "036e84ec34cba2d706ef85aa90521c2b72c26f0a14c4d2cb5da18f68b0403ec6",
-          "roundtrip_sha256": "c5d18ab177c52c0b0107b567dd1f5031a81fe38fe2f4a0045ef62560f4ad5b23"
+          "isolated": "072149dfca26161096633d6eac6312b18fa1d95fbb1a18bc31d573fdf985c82c",
+          "cumulative": "9bf56dbfcb7dc9863b5702dd0334504557d033abb2e0d5ac5d225fc52b6b39d2",
+          "xml_sha256": "7da1d836bbaaed4c2dd65aa91a995806d3218ed6cde1f8a31d1fd93329142883",
+          "roundtrip_sha256": "26f164fdcd430ce4799a2225d8fbc37f46a7092f122af99755d4f5f16db5fdf8"
         },
         "R18": {
-          "isolated": "2741416c9afdb2744fba089b2d0f03b16f581988b7d0d85840c54aa137065473",
-          "cumulative": "66313375734d9d8bbe355b357bf2613c30442dd24f8907eabb0e22983af6cd5a",
-          "xml_sha256": "7b49a6610a9129b905118fcbe42822f220554eb051af73a9dd4f7bffc171251f",
-          "roundtrip_sha256": "70533fcf457e648fc071eac78060d750295e5b5dd58676c6191997b998f5266d"
+          "isolated": "5975d8c1bd9e26cb077d2befcccb20344c63a6d71e3951e5d1902194a8205e63",
+          "cumulative": "65804ba3a05db1697d18f7a892ede9316b606162d35baf59874285e01bf89138",
+          "xml_sha256": "59ea0798fbd19ef0a9d0ed539d43a59b0b34dc0896ab99547a0752ac4c1a924d",
+          "roundtrip_sha256": "7205b4941672fc62156f0cbacf64a070a125619859d8d7ce86ccc28dd08a1770"
         },
         "R19": {
-          "isolated": "ca2d287cd77935ff6b5ac781ea5367765ee1fce92c6f32663fcb4ce42226c94e",
-          "cumulative": "7e43326ce8fb4e88215c5aad42b4de22164f00b5920232be4670448409fbfdb4",
-          "xml_sha256": "052bcd7b5a30d29c85bde8e94d068a6941ccdd24c0d34d9a611bbc0ec5e9482d",
-          "roundtrip_sha256": "9552eff51815c444eb1141bfc0e01215108f4929ddf2db86a0ea4cfbc0ec74e9"
+          "isolated": "45016898be206f5b91e7e732c1e6608d4f05b1592c2d87a8228143e1376cfb1c",
+          "cumulative": "8c810fd4531951cc06547f8ba56c26a579a244b5fb437c8ea6914b43ffd70435",
+          "xml_sha256": "9946573cdcbde3715e0dbd22ced92bc611f736aea94477dc0ad44a890e17c6b8",
+          "roundtrip_sha256": "c78ae0fa7b0ec30daabd3e4b49dea43dada05cadd3e02f17c1f8960d782c7ae1"
         },
         "R20": {
           "isolated": "838a680bf6a1dc33ddb4259165ac72e16af943f27f9318209d4f56beb34ae2f4",
-          "cumulative": "a9a94fef98ffc04a817e478cb81404041c88b36fd94afdfde64e41c1caf53abc",
-          "xml_sha256": "e7f7f7375f088f3c8f5399f4565767752bebb76d07fa7dc11791fbed58232b4e",
+          "cumulative": "864d858973d356618409d57a09c91d24658edff5bffabfb2cc0bff7395190b1c",
+          "xml_sha256": "b3c4731407743e5265ebb8f14a76cd8c94b966580b79480f36a1b92200162316",
           "roundtrip_sha256": "f9937ae246f015f3f592435c4e9957bbec8c712440c0592262170639cf032830"
         },
         "R21": {
-          "isolated": "29de751ff0917ac1a1885ef2a7344cc9d25adee55220f2bddfc982e206791c62",
-          "cumulative": "b2bb9110c418a059d193f1cbce511426f4bd806175b6cb980aa76477ca8b5fae",
-          "xml_sha256": "8b4cf1cd906c17ea86d779a363419d5cbcf019b357992bb91b1dafb1b081fbf3",
-          "roundtrip_sha256": "49bc45c39904e345f1772dad6736fda700f19923412c844c5dc7f26cea29dcda"
+          "isolated": "e70f43ad5349a15f7d83ae30637ae910644a734acbc15195eca223cdc38cde62",
+          "cumulative": "734111cf3f17773f56c2d5143e4bf5e1a1f4ef07437747080ab687f16987edd5",
+          "xml_sha256": "9ebe8999246f7b7266c52cd9f3817acb349c986327c8807e14873f01a934c4f3",
+          "roundtrip_sha256": "4fa005f080a4d6ddefa3352a64a737cda3da1fbfda3fd35fe686e0fdb75a28cf"
         },
         "R22": {
-          "isolated": "0de4a47d32095695cc310e7520524fd98144ca323eb84f7aa4d8c21c31e959a1",
-          "cumulative": "7ec0e13ee9e1c454f14a7e478aa10dc7d3211939f79307bf5dafa9d987136891",
-          "xml_sha256": "97d0b70f6c114a3fee5cd9ca3e69a13a84fb5647de20a0bffb16c8f38c21fbad",
-          "roundtrip_sha256": "dba6db79fcddb5e975b157915f67aadfc9f0529b037882f7107909d6af893385"
+          "isolated": "1e22fa6f60c89709886af884a80a805880f478eaaeccb7f129f2e4bc0919c155",
+          "cumulative": "3c116d4a47b61cfec1db905be376ff3871b18f4fc30db91b5f27882d1be0c333",
+          "xml_sha256": "b44cffceebe2afab4a11f4b5cf6c50283afdbcb5677eba3dfac8775489136a70",
+          "roundtrip_sha256": "a0fb4732485d5881be20bb55afbf0943a8ecfe3f19ea2c30193c6b4639fc95cb"
         },
         "R23": {
-          "isolated": "9a5e16de4ed78f899c1d15bac6d8f86a1d852ae2c6680924eb53727f5b85c205",
-          "cumulative": "796e809c6b2ecfce422d2f48ca08d55d392dd12e7c04e78acc4a3b2705b89139",
-          "xml_sha256": "82f9fcb3bdc527ea031c2c61f23bcf682fc170e10408e131300d8880023f08a8",
-          "roundtrip_sha256": "a2ccf0bf03356f95ab69ccae4b8fba0b323079545bda1b7e85282b29108c95d7"
+          "isolated": "c9cef2cd322bba0e550ec3ffbd6c810f6e165ae2917859e20271982d0c371e03",
+          "cumulative": "1175cddce56f983832ee33706a03ef91d6d4904556b6f71cf85d3becb7733917",
+          "xml_sha256": "610224e0b8e6f49e53bce96a40de0f19e3c9c03532affe626d6094f4f90f2d09",
+          "roundtrip_sha256": "c1b03ff78bc9a52b8791280da36d36392ce0a0922d2a5268261b4498d01ebcde"
         },
         "R24": {
-          "isolated": "af8c7d64a1dfd9d2d5d8e90f7571b087ff8ff1e048153c195c84f719a58386b8",
-          "cumulative": "2174099c4113898752bcdc7caa5fff2d65cf5bd1be8bda170f5737bc95defecc",
-          "xml_sha256": "c841975a29ee438b8a5ca393722b09b09064372e5b6b2946c3bdcb59d9b5a660",
-          "roundtrip_sha256": "54985db2f5df3caccd3391c42ff991005d9334f987313d717a6fc209cd2761d6"
+          "isolated": "401260de46e49ba45e905ec2b2e188f17cf044e90205031357cc42182c1ad870",
+          "cumulative": "c2988791ee57f8ad520b3345217beb5c403e9c7185361268f62c069710dfc2eb",
+          "xml_sha256": "43f2bc1cb1dfb0056fcc4998215c1c8dba8843964ce0fccba17d7c8698aa1061",
+          "roundtrip_sha256": "38096f21de7e879e42469cd5c7f71f98e6959f89cf9dbc905a8e1ad2c823244e"
         },
         "R25": {
-          "isolated": "02785fe4528dbc162d78a7538b8417ec2916f538d683c7ca4961ddb6222f8a1e",
-          "cumulative": "9fcadb2a5942af856a025504093e62c81b760327c6c1c7062025d34134d38d6d",
-          "xml_sha256": "b94e6c524e61cf56c562d432d36107f72b1ba6a467d7ba0e48753faeb39a0d3b",
-          "roundtrip_sha256": "cd7ad6caf79d4c07fe88ba1d696a87488db24638703c536d8c9b86859d759a05"
+          "isolated": "590d9cb18f2a8e8582d0dd7e7eb02f25fd2d56e04a06b8e5b31101539655365e",
+          "cumulative": "baa13d5d64772903555189b3a991bd15d41447bbe118554a8be84db8e3d016c7",
+          "xml_sha256": "7487220013e798c7d6c65f1e1ef8ad1f82918f46df9091999b0482be4622439d",
+          "roundtrip_sha256": "19132f0dd13d20ec52f79c3003dfea271104c02007d2641b7846f51746e521d6"
         },
         "R26": {
-          "isolated": "3cdfd774909c6f4fbadb09a6fb005dc869d2563863a32820920e9d2671d54477",
-          "cumulative": "6ad95912a2301a90fdd4826d71d5000090c0ca41b404447e301592b6630f447f",
-          "xml_sha256": "d2d8516b20225120210eacd77e92ff7e2b2d44e6d304eed5f8873de0dbce38a7",
-          "roundtrip_sha256": "5ad76e1371ceecab7406b7efaf846dec0b89ce37066d0b08e526f7d4143b44ed"
+          "isolated": "60992a5acf0bd173a30a8ac212ae752ea81d0b3656040bbf596910bf75b9f524",
+          "cumulative": "fe1ab0dc394e2b77e780633f0ab2ad1b9026138051b1d2d24ccd34f978876c98",
+          "xml_sha256": "b5c56409fbc6e2797f96811245e3ad27f008682961df345b585c84973d1ffbed",
+          "roundtrip_sha256": "8f4031bbef6442e7a2f7a06a3cc5e9245a186825958e991e36d9ea97fc48c20c"
         },
         "R27": {
-          "isolated": "9c7f174eb2f739ae34170100099a7c58e2fb4f3be24bfa6b935dc8e6fe4ba961",
-          "cumulative": "a2efe862f7fa071a6eb7413ecaeec669b51f22b512783f74d145e079e2f9b6b1",
-          "xml_sha256": "96abfff5850ccabcabfe460b52637bc3025cead47adde86e248a7f6150becda1",
-          "roundtrip_sha256": "2d799cc60ae560cf391c626be5edcd45e63b377b526309d7470009d4f90bd888"
+          "isolated": "7646b4c9fee12d4d52a2324de1cdf99c2be09eae2b31fa43d61900e55b4a0454",
+          "cumulative": "522ab5a38e02af1a6256ee803c84d0cc55d77f67ee7b6e7efe9ba6211a6c4fd6",
+          "xml_sha256": "446d4cde36303c18ca7306eaf76eeb343cbb5ce86b9a5a5aaf28319c9f5a5fbb",
+          "roundtrip_sha256": "eac88834395d26679c3f83f3afc61b12c5cfcd9de692cf0fae07eded49f42ddf"
         }
       },
-      "isolated": 27,
-      "cumulative_significant": 6,
-      "opaque_blocks": 0,
-      "passed": true,
       "owner_revision": {
-        "version": "0.5.0",
-        "scope": "R14 fixed donor-only reroll supporting unchanged0/3 swap",
-        "changes": [
+        "version": "0.6.0",
+        "scope": "all27-naming-and-instruction-rework",
+        "native_delta_status": "passed",
+        "isolated": [
           {
-            "room": "R14",
-            "prior": {
-              "isolated": "44f7e18ed0328e2a6783606446c6a85f2a54de80755196a87b51602d15c098b7",
-              "cumulative": "3505d5322118090156133111ccb676a02607e1d76f8d75227bee12dec27d6717",
-              "xml_sha256": "c288e59cffedaa9555183450132e9a17d06ff781ed3f8d810a4f7a3cf3fd364a",
-              "roundtrip_sha256": "a89e0145573ecb93147759d78eaf200ebface410e2959d998926a4d38ca069ae"
-            },
-            "current": {
-              "isolated": "7279775e877d4ae9472d39d853d6b4bc8ca4d679f8eb783984a243666019d58e",
-              "cumulative": "a668869ee7ad88e17d7b91b0b767b9d1b21bbd0e92f9cfb438caa94ef9eed0c7"
+            "id": "R01",
+            "source_sha256": "2ef333b71728814e940ed4f7312fec69edeeddb41ae9327f9282d1aa51086756",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 25,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "lists_create_with",
+              "pxt_controls_for",
+              "variables_get_reporter",
+              "math_arithmetic",
+              "array_push",
+              "al_number_hint",
+              "math_number",
+              "variables_get",
+              "text",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "774864da96122fabd7c81a120fb34eeada04c4992b50e5a7cc81dc26aae24443",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R01.blocks",
+            "roundtrip_sha256": "75282f93d80e7fbcdecd9ed3236b2a14621f91ea285cf281019840c67d254f56",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R01-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R15",
-            "prior": {
-              "isolated": "5663be64bb986f8a369bab39d21d5107cd2719ce84f60b4d67fce887e9d27157",
-              "cumulative": "514d8e3ddd1f2bb1325de3673727b0772020c230440f81f1dc34b4c784fd3105",
-              "xml_sha256": "32d4a69eb4ed20dd697734fe386e60927509bdf579f22e98e8c03f482b1fe596",
-              "roundtrip_sha256": "c5111d81e2f7456497d225a4426803083729dead7d1da7f8d17e4ceb654d1e28"
-            },
-            "current": {
-              "isolated": "5663be64bb986f8a369bab39d21d5107cd2719ce84f60b4d67fce887e9d27157",
-              "cumulative": "28a05ef90d9c242fccdc649ded37f1c4c35aed4ea35f20b5e0d2f5ef0c5c1b31"
+            "id": "R02",
+            "source_sha256": "74fc2fd5d475155cd1aed8776560e49ff46ccb0640de486614ed07a67c5bfb7d",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 20,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_roster",
+              "al_marked_index",
+              "controls_if",
+              "logic_operation",
+              "logic_compare",
+              "lists_index_get",
+              "al_hold",
+              "variables_get",
+              "math_number",
+              "lists_length"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "a77dfb610988b98ebd49c673438d39a3e0b92b3ed54e55c9905dc4708ac6d67c",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R02.blocks",
+            "roundtrip_sha256": "ac7168eaf731809cdb5ef144e9a5be712bac694f37cfd3c488f491035aa52d93",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R02-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R16",
-            "prior": {
-              "isolated": "f995b329fac49aa70ceb4313627a57f35f45cc90fd20fce3bd1435b955d300b6",
-              "cumulative": "3b5bb4193e5a18c0aea38cc29038052774e3dee7ba5be65e80846c2d32d360aa",
-              "xml_sha256": "3cb27d75bc159f09cf3caf69636b6a19e03afde622cdf574ffee7a0ab99756da",
-              "roundtrip_sha256": "8ca53ac8a53060e90f7b0b51d71b109655b64d6d134806fafdbf7e2a03047255"
-            },
-            "current": {
-              "isolated": "f995b329fac49aa70ceb4313627a57f35f45cc90fd20fce3bd1435b955d300b6",
-              "cumulative": "187ced6b18e89ddf2ddc55f7a2645050e8f65642107d3d1a8182983c89366542"
+            "id": "R03",
+            "source_sha256": "98f6692da044e4e9ba0bf2f2af9b5342988ef65df5f537d6e23562414a125994",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 20,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "al_marked_index",
+              "controls_if",
+              "logic_operation",
+              "lists_index_set",
+              "logic_compare",
+              "variables_get",
+              "text",
+              "al_set_moves",
+              "math_number",
+              "lists_length"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "4c74013dea8043ba12f15bd96671f14860f3d5a1586542c0668157a9b35e3004",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R03.blocks",
+            "roundtrip_sha256": "e8c290d405de8758cc2bb87b0d6e14a9619a7971d3df400fe7220d0357642369",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R03-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R17",
-            "prior": {
-              "isolated": "f154ea8f533a05fee51c34c92475fa986f6c47816da1732bab7c2bb1b62d053e",
-              "cumulative": "9cfc6ffa705a59bf89cbe72e2869a9cd3d4db76c8544f3bd9c9980810fa4ea2c",
-              "xml_sha256": "036e84ec34cba2d706ef85aa90521c2b72c26f0a14c4d2cb5da18f68b0403ec6",
-              "roundtrip_sha256": "c5d18ab177c52c0b0107b567dd1f5031a81fe38fe2f4a0045ef62560f4ad5b23"
-            },
-            "current": {
-              "isolated": "f154ea8f533a05fee51c34c92475fa986f6c47816da1732bab7c2bb1b62d053e",
-              "cumulative": "0aa42552d7a3ecab9d4d0e1a2b3b024fab039ac90fb5c52775012bc71a53ce11"
+            "id": "R04",
+            "source_sha256": "888ecbfc23eb19a09604c1c3537cba487f39b1068c7f18e4fceef539ae644009",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 8,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_push",
+              "variables_get",
+              "text",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "f28ffb9c5a14ca4b8863e3837f04575f287819dbef5b4c461977f258e691543b",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R04.blocks",
+            "roundtrip_sha256": "dd0e2b218dac390f54dcd662ed8681aa003eccbb4404c50a64c6487af37665bd",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R04-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R18",
-            "prior": {
-              "isolated": "2741416c9afdb2744fba089b2d0f03b16f581988b7d0d85840c54aa137065473",
-              "cumulative": "fbdf8e711ad0f519fbc745a9f461e09692edad31873734407765932d96a8c145",
-              "xml_sha256": "7b49a6610a9129b905118fcbe42822f220554eb051af73a9dd4f7bffc171251f",
-              "roundtrip_sha256": "70533fcf457e648fc071eac78060d750295e5b5dd58676c6191997b998f5266d"
-            },
-            "current": {
-              "isolated": "2741416c9afdb2744fba089b2d0f03b16f581988b7d0d85840c54aa137065473",
-              "cumulative": "66313375734d9d8bbe355b357bf2613c30442dd24f8907eabb0e22983af6cd5a"
+            "id": "R05",
+            "source_sha256": "e2b3d653c56f77c5e4fd0e97e7bea473954806248d81cd235dbb2d4937205e48",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 9,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_insertAt",
+              "variables_get",
+              "al_marked_index",
+              "text",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "53d26a99c40a557f33dc2e6a9b93d52384d91f2552d6ea24a769f9a8d3487fd0",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R05.blocks",
+            "roundtrip_sha256": "97c023e23133fc0ab36a7e287c13ee108afe8ce85111b039c4639f156c6dc495",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R05-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R19",
-            "prior": {
-              "isolated": "ca2d287cd77935ff6b5ac781ea5367765ee1fce92c6f32663fcb4ce42226c94e",
-              "cumulative": "3cd27136b353011a4189d3dfa575a9d8969d144127de1fac35e2431da4fdb694",
-              "xml_sha256": "052bcd7b5a30d29c85bde8e94d068a6941ccdd24c0d34d9a611bbc0ec5e9482d",
-              "roundtrip_sha256": "9552eff51815c444eb1141bfc0e01215108f4929ddf2db86a0ea4cfbc0ec74e9"
-            },
-            "current": {
-              "isolated": "ca2d287cd77935ff6b5ac781ea5367765ee1fce92c6f32663fcb4ce42226c94e",
-              "cumulative": "7e43326ce8fb4e88215c5aad42b4de22164f00b5920232be4670448409fbfdb4"
+            "id": "R06",
+            "source_sha256": "39b68707a1441bfbe895aecbdc641e1bf7fb5f69b69e51519886664b783d4981",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 8,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_unshift_statement",
+              "variables_get",
+              "text",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "af1edf0df352e138a4e59d6e0d92ea3b1022dfad4a41359bfd4b92c57b36d691",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R06.blocks",
+            "roundtrip_sha256": "f971cb3df31c42952651df78f71ee38a3b9cace734d7d36f72bec2b350036e7b",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R06-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R20",
-            "prior": {
-              "isolated": "838a680bf6a1dc33ddb4259165ac72e16af943f27f9318209d4f56beb34ae2f4",
-              "cumulative": "81417a65b412ff50324afe905c408dc420b135d0185edbde02ecfc379901a1ac",
-              "xml_sha256": "e7f7f7375f088f3c8f5399f4565767752bebb76d07fa7dc11791fbed58232b4e",
-              "roundtrip_sha256": "f9937ae246f015f3f592435c4e9957bbec8c712440c0592262170639cf032830"
-            },
-            "current": {
-              "isolated": "838a680bf6a1dc33ddb4259165ac72e16af943f27f9318209d4f56beb34ae2f4",
-              "cumulative": "a9a94fef98ffc04a817e478cb81404041c88b36fd94afdfde64e41c1caf53abc"
+            "id": "R07",
+            "source_sha256": "a595acf508d52f10d210a903df02635c8ebcb4ff8b6663dad445ab2c06fa1aca",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 19,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "al_marked_index",
+              "controls_if",
+              "logic_operation",
+              "array_removeat_statement",
+              "logic_compare",
+              "variables_get",
+              "al_set_moves",
+              "math_number",
+              "lists_length"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "7bc4ad6afcfb73995136a7aef89674761f64af6de023b3b87784c0f062b914c3",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R07.blocks",
+            "roundtrip_sha256": "a5f65eb68f4bf91003aa287ab0ffd22638a3d46a3b0bcbad7ff7b0dff254f7bc",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R07-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R21",
-            "prior": {
-              "isolated": "29de751ff0917ac1a1885ef2a7344cc9d25adee55220f2bddfc982e206791c62",
-              "cumulative": "6f6e413219a54a595a094bcc8326cf99000fbc4701e7b09b1de8d747c00f4149",
-              "xml_sha256": "8b4cf1cd906c17ea86d779a363419d5cbcf019b357992bb91b1dafb1b081fbf3",
-              "roundtrip_sha256": "49bc45c39904e345f1772dad6736fda700f19923412c844c5dc7f26cea29dcda"
-            },
-            "current": {
-              "isolated": "29de751ff0917ac1a1885ef2a7344cc9d25adee55220f2bddfc982e206791c62",
-              "cumulative": "b2bb9110c418a059d193f1cbce511426f4bd806175b6cb980aa76477ca8b5fae"
+            "id": "R08",
+            "source_sha256": "82438b32e294773b5f8f64d4f36920e6888b39b8e522c747724c01d41b90d5db",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 17,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "controls_if",
+              "logic_compare",
+              "lists_index_set",
+              "lists_length",
+              "math_number",
+              "variables_get",
+              "math_arithmetic",
+              "text",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "4884da77e59998a0cd4a1efd804ad1d33241a3033df720b59fe9b94a0db3e7e9",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R08.blocks",
+            "roundtrip_sha256": "36c4b19aa14c5a342b0051e9524351e3f914e0fddad7f0a22edc319faa5920b1",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R08-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R22",
-            "prior": {
-              "isolated": "0de4a47d32095695cc310e7520524fd98144ca323eb84f7aa4d8c21c31e959a1",
-              "cumulative": "af0e5d8f87633e6c1062204ddb34cef2c56e3154579319cc2d24549156624028",
-              "xml_sha256": "97d0b70f6c114a3fee5cd9ca3e69a13a84fb5647de20a0bffb16c8f38c21fbad",
-              "roundtrip_sha256": "dba6db79fcddb5e975b157915f67aadfc9f0529b037882f7107909d6af893385"
-            },
-            "current": {
-              "isolated": "0de4a47d32095695cc310e7520524fd98144ca323eb84f7aa4d8c21c31e959a1",
-              "cumulative": "7ec0e13ee9e1c454f14a7e478aa10dc7d3211939f79307bf5dafa9d987136891"
+            "id": "R09",
+            "source_sha256": "4a6b348cff721b81face8007cf714f7d2dc183bce2cbd13b73d9442ea69b423f",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 7,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_shift_statement",
+              "variables_get",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "0342f64e5ea9ba714016cff623121bc668b5a4ccfc98093debead9ad46a2646e",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R09.blocks",
+            "roundtrip_sha256": "ec69a53d0eeb2bdaf7fc173268bdea7d1e86d11c2515619f1caf705ce3cf619e",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R09-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R23",
-            "prior": {
-              "isolated": "9a5e16de4ed78f899c1d15bac6d8f86a1d852ae2c6680924eb53727f5b85c205",
-              "cumulative": "255f39e19e3f337f31381a1d0386629a3fd742f53b17247d3e34366f63d0fb38",
-              "xml_sha256": "82f9fcb3bdc527ea031c2c61f23bcf682fc170e10408e131300d8880023f08a8",
-              "roundtrip_sha256": "a2ccf0bf03356f95ab69ccae4b8fba0b323079545bda1b7e85282b29108c95d7"
-            },
-            "current": {
-              "isolated": "9a5e16de4ed78f899c1d15bac6d8f86a1d852ae2c6680924eb53727f5b85c205",
-              "cumulative": "796e809c6b2ecfce422d2f48ca08d55d392dd12e7c04e78acc4a3b2705b89139"
+            "id": "R10",
+            "source_sha256": "9f107780d0c092ab93d8be9e9a8ba9ec64c9ccd43a17a976a19f349cc4d9e592",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 7,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_pop_statement",
+              "variables_get",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "e5061a7eb5389c1da06b0aadfaa95baa59cea07e1041205e04c65df53fbc23d5",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R10.blocks",
+            "roundtrip_sha256": "3761a363d1a2da00243d4e3a2b49b9cae7a0a5c364e9ba1474b518a75a6e100b",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R10-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R24",
-            "prior": {
-              "isolated": "af8c7d64a1dfd9d2d5d8e90f7571b087ff8ff1e048153c195c84f719a58386b8",
-              "cumulative": "b642b5dda8e510c45b96e1add56abc16278d1107c4fe86017265471546a7e3fa",
-              "xml_sha256": "c841975a29ee438b8a5ca393722b09b09064372e5b6b2946c3bdcb59d9b5a660",
-              "roundtrip_sha256": "54985db2f5df3caccd3391c42ff991005d9334f987313d717a6fc209cd2761d6"
-            },
-            "current": {
-              "isolated": "af8c7d64a1dfd9d2d5d8e90f7571b087ff8ff1e048153c195c84f719a58386b8",
-              "cumulative": "2174099c4113898752bcdc7caa5fff2d65cf5bd1be8bda170f5737bc95defecc"
+            "id": "R11",
+            "source_sha256": "7998c1a036422b694df0ea9fc2c1283bae3a664485166ee43d784b914c0b0bfe",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 15,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_roster",
+              "controls_if",
+              "logic_compare",
+              "lists_length",
+              "math_number",
+              "array_shift",
+              "al_set_roster",
+              "variables_get",
+              "al_banish"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "22576444ce5652f2eb9d3ea2f3237ea43b92915cb4abc2d432dc255c0d23aeb8",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R11.blocks",
+            "roundtrip_sha256": "5a57d8f6b2ae0504b2c3be0bb91cd63cd42e5ed0b3d3959e1a3a8efe92ebad5b",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R11-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R25",
-            "prior": {
-              "isolated": "02785fe4528dbc162d78a7538b8417ec2916f538d683c7ca4961ddb6222f8a1e",
-              "cumulative": "e29255a7738efb22a8580b19feb2c626b2fc275aa741cdaf4bfbe4e68e50cfbb",
-              "xml_sha256": "b94e6c524e61cf56c562d432d36107f72b1ba6a467d7ba0e48753faeb39a0d3b",
-              "roundtrip_sha256": "cd7ad6caf79d4c07fe88ba1d696a87488db24638703c536d8c9b86859d759a05"
-            },
-            "current": {
-              "isolated": "02785fe4528dbc162d78a7538b8417ec2916f538d683c7ca4961ddb6222f8a1e",
-              "cumulative": "9fcadb2a5942af856a025504093e62c81b760327c6c1c7062025d34134d38d6d"
+            "id": "R12",
+            "source_sha256": "3213aacf6a147071bb5b48c88d89c49713611738f2a28589de35205695a25ba6",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 17,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_indexof",
+              "controls_if",
+              "variables_get",
+              "text",
+              "logic_compare",
+              "lists_index_set",
+              "math_number",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "0ae6b5c8c122a2ecb126e44744b6033cc1526f90312c3f134806b58b3babc47e",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R12.blocks",
+            "roundtrip_sha256": "838e4b6d5c80aa1ba7fe45527bd2a33db6c1aa65cbe724b11364e8babf5ac565",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R12-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R26",
-            "prior": {
-              "isolated": "3cdfd774909c6f4fbadb09a6fb005dc869d2563863a32820920e9d2671d54477",
-              "cumulative": "734fbae90762fa2cf36da003eeaf1ffdedb224bef6b513f52becc9a321f2f72a",
-              "xml_sha256": "d2d8516b20225120210eacd77e92ff7e2b2d44e6d304eed5f8873de0dbce38a7",
-              "roundtrip_sha256": "5ad76e1371ceecab7406b7efaf846dec0b89ce37066d0b08e526f7d4143b44ed"
-            },
-            "current": {
-              "isolated": "3cdfd774909c6f4fbadb09a6fb005dc869d2563863a32820920e9d2671d54477",
-              "cumulative": "6ad95912a2301a90fdd4826d71d5000090c0ca41b404447e301592b6630f447f"
+            "id": "R13",
+            "source_sha256": "1d24a6b55c7e1277e8252bc1933905acd6bd764599609e86cd4edcf012061fa5",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 8,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_roster",
+              "pxt_controls_for_of",
+              "variables_get_reporter",
+              "variables_get",
+              "al_hold"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "834027279d9bcd4b5d8d060b4345a17cbb5076b99184718a6ac04913cbe28802",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R13.blocks",
+            "roundtrip_sha256": "d9696b6fb5fe9a602731d5001d883f7fbce37643bf18420f9d992cbcbd08f8ef",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R13-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
           },
           {
-            "room": "R27",
-            "prior": {
-              "isolated": "9c7f174eb2f739ae34170100099a7c58e2fb4f3be24bfa6b935dc8e6fe4ba961",
-              "cumulative": "c4514e142810d2ccf5613b0c339086cacdfe879121f24ba2d38515bc3545eb8d",
-              "xml_sha256": "96abfff5850ccabcabfe460b52637bc3025cead47adde86e248a7f6150becda1",
-              "roundtrip_sha256": "2d799cc60ae560cf391c626be5edcd45e63b377b526309d7470009d4f90bd888"
-            },
-            "current": {
-              "isolated": "9c7f174eb2f739ae34170100099a7c58e2fb4f3be24bfa6b935dc8e6fe4ba961",
-              "cumulative": "a2efe862f7fa071a6eb7413ecaeec669b51f22b512783f74d145e079e2f9b6b1"
+            "id": "R15",
+            "source_sha256": "db75615a8246a50c71f94bbf6d8eeb58af18e0d5e1e52d69c36155374d70f228",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 21,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "pxt_controls_for",
+              "variables_get_reporter",
+              "math_arithmetic",
+              "controls_if",
+              "al_set_moves",
+              "lists_length",
+              "math_number",
+              "logic_compare",
+              "lists_index_set",
+              "variables_get",
+              "lists_index_get",
+              "text"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "d9443bb5b459b5804a6362235402e1cf122714293aba51e375ee237b130bd6c6",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R15.blocks",
+            "roundtrip_sha256": "8ee737569adebccc18794ecbcf17db6592f0a408a5c6f94760d335d44c234a61",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R15-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
             }
+          },
+          {
+            "id": "R16",
+            "source_sha256": "398be7b8407fcaed6ed98fcfb9c9d96f51fdfd902106f074855f3d4c0833ab38",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 20,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_source_moves",
+              "lists_create_with",
+              "pxt_controls_for_of",
+              "variables_get_reporter",
+              "variables_get",
+              "controls_if",
+              "al_set_moves",
+              "logic_compare",
+              "array_push",
+              "text"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "0686c57d85675bd97e73576e027fdf49e4fe27afa99e0011a447a2aa84c012f0",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R16.blocks",
+            "roundtrip_sha256": "19fa432a6194b5a1c0499b2720c56949c8d5eac162bc683392735ec1837f76bc",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R16-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R17",
+            "source_sha256": "072149dfca26161096633d6eac6312b18fa1d95fbb1a18bc31d573fdf985c82c",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 20,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_source_moves",
+              "al_moves",
+              "controls_if",
+              "logic_compare",
+              "lists_length",
+              "math_number",
+              "array_pop",
+              "al_set_source_moves",
+              "variables_get",
+              "array_push",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "7da1d836bbaaed4c2dd65aa91a995806d3218ed6cde1f8a31d1fd93329142883",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R17.blocks",
+            "roundtrip_sha256": "26f164fdcd430ce4799a2225d8fbc37f46a7092f122af99755d4f5f16db5fdf8",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R17-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R18",
+            "source_sha256": "5975d8c1bd9e26cb077d2befcccb20344c63a6d71e3951e5d1902194a8205e63",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 27,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_values",
+              "al_marked_index",
+              "controls_if",
+              "logic_operation",
+              "logic_compare",
+              "array_removeat",
+              "al_set_values",
+              "variables_get",
+              "math_number",
+              "lists_length",
+              "array_push"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "59ea0798fbd19ef0a9d0ed539d43a59b0b34dc0896ab99547a0752ac4c1a924d",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R18.blocks",
+            "roundtrip_sha256": "7205b4941672fc62156f0cbacf64a070a125619859d8d7ce86ccc28dd08a1770",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R18-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R19",
+            "source_sha256": "45016898be206f5b91e7e732c1e6608d4f05b1592c2d87a8228143e1376cfb1c",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 21,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_roster",
+              "controls_if",
+              "logic_compare",
+              "lists_length",
+              "math_number",
+              "device_random",
+              "variables_get",
+              "math_arithmetic",
+              "lists_index_get",
+              "al_hold"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "9946573cdcbde3715e0dbd22ced92bc611f736aea94477dc0ad44a890e17c6b8",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R19.blocks",
+            "roundtrip_sha256": "c78ae0fa7b0ec30daabd3e4b49dea43dada05cadd3e02f17c1f8960d782c7ae1",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R19-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R20",
+            "source_sha256": "838a680bf6a1dc33ddb4259165ac72e16af943f27f9318209d4f56beb34ae2f4",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 7,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_reverse",
+              "variables_get",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "b3c4731407743e5265ebb8f14a76cd8c94b966580b79480f36a1b92200162316",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R20.blocks",
+            "roundtrip_sha256": "f9937ae246f015f3f592435c4e9957bbec8c712440c0592262170639cf032830",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R20-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R21",
+            "source_sha256": "e70f43ad5349a15f7d83ae30637ae910644a734acbc15195eca223cdc38cde62",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 24,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_indexof",
+              "controls_if",
+              "variables_get",
+              "text",
+              "logic_operation",
+              "array_insertAt",
+              "logic_compare",
+              "al_set_moves",
+              "math_number",
+              "lists_length"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "9ebe8999246f7b7266c52cd9f3817acb349c986327c8807e14873f01a934c4f3",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R21.blocks",
+            "roundtrip_sha256": "4fa005f080a4d6ddefa3352a64a737cda3da1fbfda3fd35fe686e0fdb75a28cf",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R21-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R22",
+            "source_sha256": "1e22fa6f60c89709886af884a80a805880f478eaaeccb7f129f2e4bc0919c155",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 23,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_targets",
+              "al_marked_index",
+              "controls_if",
+              "logic_operation",
+              "logic_compare",
+              "array_removeat",
+              "array_unshift_statement",
+              "variables_get",
+              "math_number",
+              "lists_length",
+              "al_set_targets"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "b44cffceebe2afab4a11f4b5cf6c50283afdbcb5677eba3dfac8775489136a70",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R22.blocks",
+            "roundtrip_sha256": "a0fb4732485d5881be20bb55afbf0943a8ecfe3f19ea2c30193c6b4639fc95cb",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R22-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R23",
+            "source_sha256": "c9cef2cd322bba0e550ec3ffbd6c810f6e165ae2917859e20271982d0c371e03",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 16,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_indexof",
+              "controls_if",
+              "variables_get",
+              "text",
+              "logic_compare",
+              "array_removeat_statement",
+              "math_number",
+              "al_set_moves"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "610224e0b8e6f49e53bce96a40de0f19e3c9c03532affe626d6094f4f90f2d09",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R23.blocks",
+            "roundtrip_sha256": "c1b03ff78bc9a52b8791280da36d36392ce0a0922d2a5268261b4498d01ebcde",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R23-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R25",
+            "source_sha256": "590d9cb18f2a8e8582d0dd7e7eb02f25fd2d56e04a06b8e5b31101539655365e",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 29,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "pxt_controls_for",
+              "variables_get_reporter",
+              "math_arithmetic",
+              "controls_if",
+              "al_set_moves",
+              "lists_length",
+              "math_number",
+              "logic_operation",
+              "lists_index_set",
+              "variables_get",
+              "logic_compare",
+              "text",
+              "lists_index_get"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "7487220013e798c7d6c65f1e1ef8ad1f82918f46df9091999b0482be4622439d",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R25.blocks",
+            "roundtrip_sha256": "19132f0dd13d20ec52f79c3003dfea271104c02007d2641b7846f51746e521d6",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R25-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R26",
+            "source_sha256": "60992a5acf0bd173a30a8ac212ae752ea81d0b3656040bbf596910bf75b9f524",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 35,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_source_moves",
+              "lists_create_with",
+              "logic_boolean",
+              "pxt_controls_for_of",
+              "variables_get_reporter",
+              "variables_get",
+              "controls_if",
+              "al_set_moves",
+              "logic_compare",
+              "logic_operation",
+              "array_push",
+              "text",
+              "logic_negate"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "b5c56409fbc6e2797f96811245e3ad27f008682961df345b585c84973d1ffbed",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R26.blocks",
+            "roundtrip_sha256": "8f4031bbef6442e7a2f7a06a3cc5e9245a186825958e991e36d9ea97fc48c20c",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R26-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R27",
+            "source_sha256": "7646b4c9fee12d4d52a2324de1cdf99c2be09eae2b31fa43d61900e55b4a0454",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 29,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_roster",
+              "pxt_controls_for_of",
+              "al_moves",
+              "pxt_controls_for",
+              "variables_get_reporter",
+              "variables_get",
+              "al_hold",
+              "math_arithmetic",
+              "controls_if",
+              "al_set_moves",
+              "lists_length",
+              "math_number",
+              "logic_compare",
+              "lists_index_set",
+              "lists_index_get",
+              "text"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "446d4cde36303c18ca7306eaf76eeb343cbb5ce86b9a5a5aaf28319c9f5a5fbb",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R27.blocks",
+            "roundtrip_sha256": "eac88834395d26679c3f83f3afc61b12c5cfcd9de692cf0fae07eded49f42ddf",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R27-roundtrip.ts",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            }
+          },
+          {
+            "id": "R14",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            },
+            "source_sha256": "2b21f615c6a4c0920a09bd19626f3d16421f8b4947de93f07eb927d816dcfd52",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 30,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_values",
+              "lists_index_set",
+              "lists_index_get",
+              "variables_get",
+              "math_number",
+              "device_random",
+              "al_set_values"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "16cdf30d7ead772015ec9547f7a199fd9b03fe1976291ce0bc3fc220634ae95d",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R14.blocks",
+            "roundtrip_sha256": "79644f6a7fc28e4f68f2fd18486dc583ca95decbd1a90ed292e26ce473e26b55",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R14-roundtrip.ts"
+          },
+          {
+            "id": "R24",
+            "native_api_lf_sha256": {
+              "learner-api.ts": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311",
+              "contracts.ts": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
+            },
+            "source_sha256": "401260de46e49ba45e905ec2b2e188f17cf044e90205031357cc42182c1ad870",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 28,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "al_moves",
+              "array_unshift_statement",
+              "variables_get",
+              "text",
+              "al_set_moves",
+              "al_marked_index",
+              "controls_if",
+              "logic_operation",
+              "lists_index_set",
+              "logic_compare",
+              "math_number",
+              "lists_length"
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "43f2bc1cb1dfb0056fcc4998215c1c8dba8843964ce0fccba17d7c8698aa1061",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/R24.blocks",
+            "roundtrip_sha256": "38096f21de7e879e42469cd5c7f71f98e6959f89cf9dbc905a8e1ad2c823244e",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/R24-roundtrip.ts"
           }
         ],
-        "native_delta_status": "passed",
-        "native_delta_directory": "validation/visual-instructions-v0.5.0/native",
+        "cumulative": [
+          {
+            "id": "R27",
+            "source_sha256": "522ab5a38e02af1a6256ee803c84d0cc55d77f67ee7b6e7efe9ba6211a6c4fd6",
+            "success": true,
+            "diagnostics": [],
+            "block_count": 510,
+            "block_types": [
+              "al_on_interact",
+              "variables_set",
+              "lists_create_with",
+              "pxt_controls_for",
+              "al_roster",
+              "al_moves",
+              "array_push",
+              "array_insertAt",
+              "array_unshift_statement",
+              "controls_if",
+              "array_shift_statement",
+              "array_pop_statement",
+              "pxt_controls_for_of",
+              "al_values",
+              "lists_index_set",
+              "al_source_moves",
+              "array_reverse",
+              "al_targets",
+              "variables_get_reporter",
+              "math_arithmetic",
+              "al_marked_index",
+              "variables_get",
+              "text",
+              "al_set_moves",
+              "logic_compare",
+              "array_indexof",
+              "al_hold",
+              "lists_index_get",
+              "math_number",
+              "device_random",
+              "al_set_values",
+              "al_number_hint",
+              "logic_operation",
+              "array_removeat_statement",
+              "lists_length",
+              "array_shift",
+              "al_set_roster",
+              "logic_boolean",
+              "al_banish",
+              "array_pop",
+              "al_set_source_moves",
+              "array_removeat",
+              "al_set_targets",
+              "logic_negate"
+            ],
+            "handler_count": 30,
+            "handlers": [
+              {
+                "room": "apocTypes.Room.R01",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R02",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R03",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R04",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R05",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R06",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R07",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R08",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R09",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R10",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R11",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R12",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R13",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R14",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R14",
+                "station": "apocTypes.Station.Secondary"
+              },
+              {
+                "room": "apocTypes.Room.R15",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R16",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R17",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R18",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R19",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R20",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R21",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R22",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R23",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R24",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R24",
+                "station": "apocTypes.Station.Secondary"
+              },
+              {
+                "room": "apocTypes.Room.R25",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R26",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R27",
+                "station": "apocTypes.Station.Primary"
+              },
+              {
+                "room": "apocTypes.Room.R27",
+                "station": "apocTypes.Station.Secondary"
+              }
+            ],
+            "opaque_blocks": 0,
+            "xml_sha256": "b2f7ed8dbf94f2f7d7df633414a35e8652a6d0e0aef0cbb235425acb4a530bcf",
+            "xml_path": "validation/visual-instructions-v0.6.0/native/cumulative-R27.blocks",
+            "roundtrip_sha256": "1f093f1bd7eb526c28f8cc4e8d6b0a674b031f874e0833a965fb4d1d3333de72",
+            "roundtrip_path": "validation/visual-instructions-v0.6.0/native/cumulative-R27-roundtrip.ts"
+          }
+        ],
         "native_delta_receipt": {
-          "path": "validation/visual-instructions-v0.5.0/native/RESULTS.json",
-          "sha256": "cf099c45d5c995ab9d030ed478d768b3448871c8111d0ee09b03e83ac2c83ef6"
-        },
-        "isolated": {
-          "id": "R14",
-          "source_sha256": "7279775e877d4ae9472d39d853d6b4bc8ca4d679f8eb783984a243666019d58e",
-          "success": true,
-          "diagnostics": [],
-          "block_count": 30,
-          "block_types": [
-            "al_on_interact",
-            "variables_set",
-            "al_values",
-            "lists_index_set",
-            "lists_index_get",
-            "variables_get",
-            "math_number",
-            "device_random",
-            "al_set_values"
-          ],
-          "opaque_blocks": 0,
-          "xml_sha256": "93114ff79002ba56f24d031170beb3fae810a7b65addda43c223e032c6c1b4fc",
-          "xml_path": "validation/visual-instructions-v0.5.0/native/R14.blocks",
-          "roundtrip_sha256": "5057cc832fce925d0a056864b5776cbe01dfb0dd6d61d8c6b8609a264efe3c89",
-          "roundtrip_path": "validation/visual-instructions-v0.5.0/native/R14-roundtrip.ts"
-        },
-        "cumulative": {
-          "id": "R27",
-          "source_sha256": "a2efe862f7fa071a6eb7413ecaeec669b51f22b512783f74d145e079e2f9b6b1",
-          "success": true,
-          "diagnostics": [],
-          "block_count": 510,
-          "block_types": [
-            "al_on_interact",
-            "variables_set",
-            "lists_create_with",
-            "pxt_controls_for",
-            "al_roster",
-            "al_moves",
-            "array_push",
-            "array_insertAt",
-            "array_unshift_statement",
-            "controls_if",
-            "array_shift_statement",
-            "array_pop_statement",
-            "pxt_controls_for_of",
-            "al_values",
-            "lists_index_set",
-            "al_source_moves",
-            "array_reverse",
-            "al_targets",
-            "variables_get_reporter",
-            "math_arithmetic",
-            "al_marked_index",
-            "variables_get",
-            "text",
-            "al_set_moves",
-            "logic_compare",
-            "array_indexof",
-            "al_hold",
-            "lists_index_get",
-            "math_number",
-            "device_random",
-            "al_set_values",
-            "al_number_hint",
-            "logic_operation",
-            "array_removeat_statement",
-            "lists_length",
-            "array_shift",
-            "al_set_roster",
-            "logic_boolean",
-            "al_banish",
-            "array_pop",
-            "al_set_source_moves",
-            "array_removeat",
-            "al_set_targets",
-            "logic_negate"
-          ],
-          "handler_count": 30,
-          "handlers": [
-            {
-              "room": "apocTypes.Room.R01",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R02",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R03",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R04",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R05",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R06",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R07",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R08",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R09",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R10",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R11",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R12",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R13",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R14",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R14",
-              "station": "apocTypes.Station.Secondary"
-            },
-            {
-              "room": "apocTypes.Room.R15",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R16",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R17",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R18",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R19",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R20",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R21",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R22",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R23",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R24",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R24",
-              "station": "apocTypes.Station.Secondary"
-            },
-            {
-              "room": "apocTypes.Room.R25",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R26",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R27",
-              "station": "apocTypes.Station.Primary"
-            },
-            {
-              "room": "apocTypes.Room.R27",
-              "station": "apocTypes.Station.Secondary"
-            }
-          ],
-          "opaque_blocks": 0,
-          "xml_sha256": "44e7cb6894e9236b78b2c26235fa37bbf4537f67f8ea8b5b669e02e0ae5b62c5",
-          "xml_path": "validation/visual-instructions-v0.5.0/native/cumulative-R27.blocks",
-          "roundtrip_sha256": "ba2b2a1c967a7db1381a91962cb8e618a8094cb918da3d46eee5287e4108884c",
-          "roundtrip_path": "validation/visual-instructions-v0.5.0/native/cumulative-R27-roundtrip.ts"
+          "path": "validation/visual-instructions-v0.6.0/native/RESULTS.json",
+          "sha256": "a94b46b44d2315afeb057b79b76fc6798469f6400d0f4d9d1f8eed606b797208"
         }
       }
     },
-    "current_gameplay_manifest_sha256": "f92582879bcb3e9654ee2c6ca73eadae1c062acc60a9d0a0b16d023afa59b7f4",
+    "current_gameplay_manifest_sha256": "8b67fe60f60f0640d686f4c17305bfe9d5f33578ccabe2d74e7587ad31236496",
     "historical_media_preserved": true
   },
   "demo": {
-    "source_project": "tests/r14-reroll/runs/native-v3/clean-demo-v0.5.0",
-    "source_compile": "tests/r14-reroll/runs/native-v3/clean-demo-v0.5.0/COMPILE.json",
-    "compile_receipt_sha256": "2d7d8c29868ae88c46aa1570ab5498f961a322848fbe2201317c7fe82888c9e2",
-    "binary_sha256": "80c0077b871291c59c2a4d2b6b6b2508e3b93fc3eac9221aa73d8b5e0ea75bec",
+    "source_project": "tests/native-room-visuals/runs/full-films-v0.6.0/clean-demo-local-names",
+    "source_compile": "tests/native-room-visuals/runs/full-films-v0.6.0/clean-demo-local-names/COMPILE.json",
+    "compile_receipt_sha256": "20b7e7396c19fd19b774dfe3c97d03ee296b73a63f0a012e39f6bb25f548d129",
+    "binary_sha256": "1c9aec6114ccfbf146c8466d72a5ceb6b8281356a7176fbc5e597ecfc8371a38",
     "target": {
       "branch": "stable4.1",
       "tag": "v4.1.25",
@@ -748,8 +1330,8 @@
     "source_files": [
       {
         "file": "contracts.ts",
-        "bytes": 4720,
-        "sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+        "bytes": 5679,
+        "sha256": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
       },
       {
         "file": "config.ts",
@@ -778,8 +1360,8 @@
       },
       {
         "file": "supplied-world/advice.ts",
-        "bytes": 39633,
-        "sha256": "d9f9b5827c8a9030ee85858a90b95bdb5742c19a9bd0b4db50f2de546c2afeb5"
+        "bytes": 40437,
+        "sha256": "091ee9c8b37886fe1ee9663dfa219b4580c524bebf229737927ad7dcd03f805e"
       },
       {
         "file": "supplied-world/save.ts",
@@ -788,23 +1370,23 @@
       },
       {
         "file": "supplied-world/view.ts",
-        "bytes": 45230,
-        "sha256": "6b1af14e53f75dc93ec300280b19e98e3d3691bbfcb1f2f944ff686b54718d6d"
+        "bytes": 44809,
+        "sha256": "e1fbf6fa2388264e47a1c5f312637421a682a668871c6e72a44751b1f70753ab"
       },
       {
         "file": "supplied-world/world.ts",
-        "bytes": 45049,
-        "sha256": "c0afc83e1bbce347ab9e5e88c6e0d070d6ee0adb85786d11453190d7fa64f05a"
+        "bytes": 45099,
+        "sha256": "d83a4a7a78bd91f1c6b16b15a39848bf9918e6b7b26c284286d4e8abca2873bd"
       },
       {
         "file": "learner-api.ts",
-        "bytes": 2539,
-        "sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8"
+        "bytes": 5956,
+        "sha256": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311"
       },
       {
         "file": "main.ts",
-        "bytes": 10997,
-        "sha256": "fa57c675eb0daa779de6f7c9f878d85f49d4d9657bb3014f283a9fe09911aa59"
+        "bytes": 11208,
+        "sha256": "2bf35332975143819b7bfd6a46cb08a54340ae4e778b156847c72375298bfd52"
       },
       {
         "file": "bootstrap.ts",
@@ -838,23 +1420,23 @@
     },
     {
       "path": "contracts.ts",
-      "bytes": 4720,
-      "sha256": "e3ab74d083a1a9ba744cc74322a5097ea66ba2544ae5dc506c0f309acd26913f"
+      "bytes": 5679,
+      "sha256": "491d98a1587879c7ee9f0b19d7681df1cff8294545986fa5f44fe37db3b634b5"
     },
     {
       "path": "learner-api.ts",
-      "bytes": 2539,
-      "sha256": "5ca0ac0c0c0f95d7cd04f21c17fc080375a7ecf9cf00b271b7e0b219d146fcb8"
+      "bytes": 5956,
+      "sha256": "40d8edf571e759bf1b163054ac34b3f67863712b6fa5eff49d07dbb3b958f311"
     },
     {
       "path": "main.ts",
-      "bytes": 10997,
-      "sha256": "fa57c675eb0daa779de6f7c9f878d85f49d4d9657bb3014f283a9fe09911aa59"
+      "bytes": 11208,
+      "sha256": "2bf35332975143819b7bfd6a46cb08a54340ae4e778b156847c72375298bfd52"
     },
     {
       "path": "pxt.json",
       "bytes": 909,
-      "sha256": "6d25eb0edc614907c049fbb758b462c43193aa6a8a97a72630a14dc769624ff4"
+      "sha256": "a6d3f97d83493ff900750f3f9e336bf80517cd4b9d0b9658d2e997efcf823846"
     },
     {
       "path": "README.md",
@@ -863,8 +1445,8 @@
     },
     {
       "path": "supplied-world/advice.ts",
-      "bytes": 39633,
-      "sha256": "d9f9b5827c8a9030ee85858a90b95bdb5742c19a9bd0b4db50f2de546c2afeb5"
+      "bytes": 40437,
+      "sha256": "091ee9c8b37886fe1ee9663dfa219b4580c524bebf229737927ad7dcd03f805e"
     },
     {
       "path": "supplied-world/art.ts",
@@ -893,13 +1475,13 @@
     },
     {
       "path": "supplied-world/view.ts",
-      "bytes": 45230,
-      "sha256": "6b1af14e53f75dc93ec300280b19e98e3d3691bbfcb1f2f944ff686b54718d6d"
+      "bytes": 44809,
+      "sha256": "e1fbf6fa2388264e47a1c5f312637421a682a668871c6e72a44751b1f70753ab"
     },
     {
       "path": "supplied-world/world.ts",
-      "bytes": 45049,
-      "sha256": "c0afc83e1bbce347ab9e5e88c6e0d070d6ee0adb85786d11453190d7fa64f05a"
+      "bytes": 45099,
+      "sha256": "d83a4a7a78bd91f1c6b16b15a39848bf9918e6b7b26c284286d4e8abca2873bd"
     }
   ]
 }

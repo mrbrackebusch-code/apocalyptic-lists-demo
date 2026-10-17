@@ -1,13 +1,73 @@
-// AL-IMPLEMENTATION-1.0 — frozen lead-owned runtime types, 2026-10-12.
+// AL-IMPLEMENTATION-1.0 runtime types; game-owned display metadata, v0.6.0.
 // Conserve usage. PXT Static TypeScript, no modules, no startup or learner solution.
 namespace apocTypes {
-    export enum Side { Ally = 0, Enemy = 1 }
-    export enum Station { Primary = 1, Secondary = 2 }
+    export enum Side {
+        //% block="our team"
+        Ally = 0,
+        //% block="enemies"
+        Enemy = 1
+    }
+    export enum Station {
+        //% block="Left altar"
+        Primary = 1,
+        //% block="Right altar"
+        Secondary = 2
+    }
     export enum Room {
-        R01 = 1, R02 = 2, R03 = 3, R04 = 4, R05 = 5, R06 = 6, R07 = 7,
-        R08 = 8, R09 = 9, R10 = 10, R11 = 11, R12 = 12, R13 = 13, R14 = 14,
-        R15 = 15, R16 = 16, R17 = 17, R18 = 18, R19 = 19, R20 = 20, R21 = 21,
-        R22 = 22, R23 = 23, R24 = 24, R25 = 25, R26 = 26, R27 = 27
+        //% block="1"
+        R01 = 1,
+        //% block="2"
+        R02 = 2,
+        //% block="3"
+        R03 = 3,
+        //% block="4"
+        R04 = 4,
+        //% block="5"
+        R05 = 5,
+        //% block="6"
+        R06 = 6,
+        //% block="7"
+        R07 = 7,
+        //% block="8"
+        R08 = 8,
+        //% block="9"
+        R09 = 9,
+        //% block="10"
+        R10 = 10,
+        //% block="11"
+        R11 = 11,
+        //% block="12"
+        R12 = 12,
+        //% block="13"
+        R13 = 13,
+        //% block="14"
+        R14 = 14,
+        //% block="15"
+        R15 = 15,
+        //% block="16"
+        R16 = 16,
+        //% block="17"
+        R17 = 17,
+        //% block="18"
+        R18 = 18,
+        //% block="19"
+        R19 = 19,
+        //% block="20"
+        R20 = 20,
+        //% block="21"
+        R21 = 21,
+        //% block="22"
+        R22 = 22,
+        //% block="23"
+        R23 = 23,
+        //% block="24"
+        R24 = 24,
+        //% block="25"
+        R25 = 25,
+        //% block="26"
+        R26 = 26,
+        //% block="27"
+        R27 = 27
     }
     export class PowerSource {
         constructor() {}
